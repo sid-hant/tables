@@ -3,121 +3,138 @@
 
 <!-- Nav bar -->
 <div class="container">
-   <nav class="navbar navbar-toggler-left bg-inverse nav-bar-main">
-      <h1 class="tables-main">tables</h1>
-      <a href="/logout"><button type="submit" class="btn btn-danger navbar-toggler-right">LEAVE ROOM</button></a>
-      <p class="room-id-text">Room ID: {{ room_id }}</p>
-   </nav>
+    <nav class="navbar navbar-toggler-left bg-inverse nav-bar-main">
+        <h1 class="tables-main">tables</h1>
+        <a href="/logout"><button type="submit" class="btn btn-danger navbar-toggler-right">LEAVE ROOM</button></a>
+        <p class="room-id-text">Room ID: {{ room_id }}</p>
+    </nav>
 </div>
 <!--End Nav Bar-->
 
 <div class="container row table-match-leader">
-   <div class="col-md-4 recent-matches-div">
-      <h4 class="labels-for-tables">LAST 5 MATCHES</h4>
-      <table class="table table-condensed">
-         <thead>
-            <tr class="table-headers">
-               <th scope="col">NAME</th>
-               <th scope="col">NAME</th>
-               <th scope="col">SCORE</th>
-               <th scope="col"></th>
-            </tr>
-         </thead>
-         <tbody>
-            {% for match in matches %}
-            <tr>
-               <td>{{ match.p1 }}</td>
-               <td>{{ match.p2 }}</td>
-               <td>{{ match.p1score }}</td>
-               <td>{{ match.p2score }}</td>
-            </tr>
-            {% endfor %}
-         </tbody>
-      </table>
-   </div>
-   <div class="col-md-8 recent-matches-div">
-      <h4 class="labels-for-tables">TABLE</h4>
-      <table class="table">
-         <thead>
-            <tr class="table-headers">
-               <th scope="col">Name</th>
-               <th scope="col">GP</th>
-               <th scope="col">W</th>
-               <th scope="col">L</th>
-               <th scope="col">P</th>
-            </tr>
-         </thead>
-         <tbody>
-            {% for player in players %}
-            <tr>
-               <td>{{ player.name }}</td>
-               <td>{{ player.games_played }}</td>
-               <td>{{ player.wins }}</td>
-               <td>{{ player.loss }}</td>
-               <td>{{ player.points }}</td>
-            </tr>
-            {% endfor %}
-         </tbody>
-      </table>
-   </div>
-</div>
 
-<div class="container row table-match-leader">
-   <div class="col-md-4 settings">
-       <h5 class="match-label">ADD MATCH</h5>
-      <form id="form-add-match" action="/matches/add" method="post">
-         <div class="form-group">
-            <label for="p1">PLAYER NAME(1)</label>
-            <input type="text" id="p1" class="form-control" name="p1">
-         </div>
-         <div class="form-group">
-            <label for="p2">PLAYER NAME(2)</label>
-            <input type="text" id="p2" class="form-control" name="p2">
-         </div>
-         <div class="form-group">
-            <label for="p1score">SCORE(1)</label>
-            <input type="number" id="p1score" class="form-control" name="p1score">
-         </div>
-         <div class="form-group">
-            <label for="p2score">SCORE(2)</label>
-            <input type="number" id="p2score" class="form-control" name="p2score">
-         </div>
-         <div class="form-group">
-            <label for="ppassword">PASSWORD</label>
-            <input type="password" id="ppassword" class="form-control" name="password">
-         </div>
-         <button type="submit" class="btn btn-outline-light">ADD GAME</button>
-      </form>
-   </div>
-   <div class="col-md-4 settings">
-       <h5 class="match-label">ADD PLAYER</h5>
-      <form id="form-add" action="/players/add" method="post">
-         <div class="form-group">
-            <label for="player_name">NAME</label>
-            <input type="text" id="player_name" class="form-control" name="player_name">
-         </div>
-         <div class="form-group">
-            <label for="password">PASSWORD</label>
-            <input type="password" id="password" class="form-control" name="password">
-         </div>
-         <button type="submit" class="btn btn-outline-light">ADD PLAYER</button>
-      </form>
-   </div>
-   <div class="col-md-4 settings">
-       <h5 class="match-label">REMOVE PLAYER</h5>
-      <form id="form-remove" action="/players/remove" method="post">
-         <div class="form-group">
-            <label for="player_name">NAME</label>
-            <input type="text" id="remove_player_name" class="form-control" name="player_name">
-         </div>
-         <div class="form-group">
-            <label for="password">PASSWORD</label>
-            <input type="password" id="remove_password" class="form-control" name="password">
-         </div>
-         <button type="submit" class="btn btn-outline-light">REMOVE PLAYER</button>
-      </form>
-      <h5 class="error-label">{{ error_msg}}</h5>
-   </div>
+    <div class="col-md-4 settings">
+        <a class="btn btn-outline-light togg-but" data-toggle="collapse" href="#multiCollapseADDMATCH" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
+         ADD MATCH
+         </a>
+        <div class="collapse multi-collapse" id="multiCollapseADDMATCH">
+            <div class="card card-body">
+                <form id="form-add-match" action="/matches/add" method="post">
+                    <div class="form-group">
+                        <label for="p1">PLAYER NAME(1)</label>
+                        <input type="text" id="p1" class="form-control" name="p1">
+                    </div>
+                    <div class="form-group">
+                        <label for="p2">PLAYER NAME(2)</label>
+                        <input type="text" id="p2" class="form-control" name="p2">
+                    </div>
+                    <div class="form-group">
+                        <label for="p1score">SCORE(1)</label>
+                        <input type="number" id="p1score" class="form-control" name="p1score">
+                    </div>
+                    <div class="form-group">
+                        <label for="p2score">SCORE(2)</label>
+                        <input type="number" id="p2score" class="form-control" name="p2score">
+                    </div>
+                    <div class="form-group">
+                        <label for="ppassword">PASSWORD</label>
+                        <input type="password" id="ppassword" class="form-control" name="password">
+                    </div>
+                    <button type="submit" class="btn btn-outline-light">ADD GAME</button>
+                </form>
+            </div>
+        </div>
+        <br>
+        <a class="btn btn-outline-light togg-but" data-toggle="collapse" href="#multiCollapseADDPLAYER" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
+         ADD PLAYER
+         </a>
+        <div class="collapse multi-collapse" id="multiCollapseADDPLAYER">
+            <div class="card card-body">
+                <form id="form-add" action="/players/add" method="post">
+                    <div class="form-group">
+                        <label for="player_name">NAME</label>
+                        <input type="text" id="player_name" class="form-control" name="player_name">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">PASSWORD</label>
+                        <input type="password" id="password" class="form-control" name="password">
+                    </div>
+                    <button type="submit" class="btn btn-outline-light">ADD PLAYER</button>
+                </form>
+            </div>
+        </div>
+        <br>
+        <a class="btn btn-outline-light togg-but" data-toggle="collapse" href="#multiCollapseREMPLAYER" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
+         REMOVE PLAYER
+         </a>
+        <div class="collapse multi-collapse" id="multiCollapseREMPLAYER">
+            <div class="card card-body">
+                <form id="form-remove" action="/players/remove" method="post">
+                    <div class="form-group">
+                        <label for="player_name">NAME</label>
+                        <input type="text" id="remove_player_name" class="form-control" name="player_name">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">PASSWORD</label>
+                        <input type="password" id="remove_password" class="form-control" name="password">
+                    </div>
+                    <button type="submit" class="btn btn-outline-light">REMOVE PLAYER</button>
+                </form>
+            </div>
+
+        </div>
+              <div class="container last-5">
+                <h4 class="labels-for-tables">LAST 5 MATCHES</h4>
+                <table class="table table-condensed last-5-table">
+                    <thead>
+                        <tr class="table-headers">
+                            <th scope="col">NAME</th>
+                            <th scope="col"></th>
+                            <th scope="col">SCORE</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for match in matches %}
+                        <tr>
+                            <td>{{ match.p1 }}</td>
+                            <td>{{ match.p2 }}</td>
+                            <td>{{ match.p1score }}</td>
+                            <td>{{ match.p2score }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+    </div>
+
+
+    <div class="col-md-8 recent-matches-div">
+        <h4 class="labels-for-tables">TABLE</h4>
+        <table class="table">
+            <thead>
+                <tr class="table-headers">
+                    <th scope="col">Name</th>
+                    <th scope="col">GP</th>
+                    <th scope="col">W</th>
+                    <th scope="col">L</th>
+                    <th scope="col">P</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for player in players %}
+                <tr>
+                    <td>{{ player.name }}</td>
+                    <td>{{ player.games_played }}</td>
+                    <td>{{ player.wins }}</td>
+                    <td>{{ player.loss }}</td>
+                    <td>{{ player.points }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </div>
 
 
