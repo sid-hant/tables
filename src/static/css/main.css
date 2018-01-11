@@ -1,0 +1,90 @@
+
+.settings form button{
+
+
+}
+
+.settings form{
+    background-color:rgb(48,48,48);
+    color:white;
+    border-radius:12px;
+    padding: 8px;
+    font: arial;
+    font-size: 8px;
+}
+
+.match-label{
+    color:white;
+    font: arial;
+}
+
+.labels-for-tables{
+    text-align:center;
+    color:white;
+    font: arial;
+}
+
+.table-headers{
+    background-color:white;
+    color:black;
+    font: arial;
+}
+
+.recent-matches-div table{
+    background-color:rgb(48,48,48);
+    color:white;
+    border-radius:12px;
+    text-align:center;
+    font: arial;
+}
+
+
+.table-match-leader{
+    padding-left: 14%;
+}
+
+.sign-up-div{
+    padding-top: 5px;
+}
+
+.login-page{
+    background-image: url("login-bg.jpg");
+}
+
+.login-form{
+    max-width: 350px;
+}
+
+.page-form{
+    padding-top: 18%;
+    color: white;
+}
+
+.tables-main{
+    color:white;
+    padding-right: 20px;
+    font-size: 60px;
+}
+
+.nav-bar-main{
+    float: left;
+}
+
+.nav-bar-main a{
+    padding-right:20px;
+}
+
+.room-id-text{
+    font-size: 10px;
+    color: white;
+}
+
+body{
+    background: rgb(98, 98, 98);
+}
+
+
+.container {
+    background: rgb(98, 98, 98;
+}
+

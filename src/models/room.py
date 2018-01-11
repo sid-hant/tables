@@ -1,0 +1,106 @@
+import uuid
+from src.common.database import Database
+from flask import session
+from src.models.player import Player
+from src.models.match import Match
+
+
+class Room(object):
+
+    def __init__(self, password, _id=None):
+        self._id = self._id = uuid.uuid4().hex if _id is None else _id
+        self.password = password
+
+    def save_to_mongo(self):
+        Database.insert(collection='rooms', data=self.json())
+
+    def json(self):
+        return {
+            "password": self.password,
+            "_id": self._id,
+        }
+
+    @classmethod
+    def from_mongo(cls, _id):
+        room_data = Database.find_one(collection="rooms", query={'_id': _id})
+        return cls(**room_data)
+
+    @classmethod
+    def find_by_id(cls, _id):
+        data = Database.find_one("rooms", {"_id": _id})
+        if data is not None:
+            return cls(**data)
+        return None
+
+    @staticmethod
+    def login_valid(room_id, password):
+        room = Room.find_by_id(room_id)
+        if room is not None:
+            return room.password == password
+        return False
+
+    @staticmethod
+    def login(room_id):
+        session['_id'] = room_id
+
+    @staticmethod
+    def new_player(name, room_id):
+        player = Player(name, 0, 0, 0, 0, room_id)
+        player.save_to_mongo()
+
+    @staticmethod
+    def new_match(p1,p2,p1score,p2score,room_id):
+        match = Match(p1,p2,p1score,p2score,room_id)
+        match.save_to_mongo()
+
+    @staticmethod
+    def remove_player(name):
+        find_player = Player.find_by_name(name)
+        if find_player is not None:
+            find_player.remove_from_mongo()
+        else:
+            return None
+
+    @staticmethod
+    def update_table(p1, p2, p1score, p2score):
+        player1_data = Database.find_one("players", {"name": p1})
+        player2_data = Database.find_one("players", {"name": p2})
+        if player1_data and player2_data is not None:
+            if p1score > p2score:
+                winner = Player.find_by_name(p1)
+                winner.wins = winner.wins + 1
+                winner.games_played = winner.games_played + 1
+                winner.points = winner.points + 3
+
+                loser = Player.find_by_name(p2)
+                loser.loss = loser.loss + 1
+                loser.games_played = loser.games_played + 1
+
+                winner.update_mongo()
+                loser.update_mongo()
+
+            else:
+                winner = Player.find_by_name(p2)
+                winner.wins = winner.wins + 1
+                winner.games_played = winner.games_played + 1
+                winner.points = winner.points + 3
+
+                loser = Player.find_by_name(p1)
+                loser.loss = loser.loss + 1
+                loser.games_played = loser.games_played + 1
+
+                winner.update_mongo()
+                loser.update_mongo()
+        else:
+            return None
+
+    def get_players(self):
+        return Player.find_by_room_id(self._id)
+
+    def get_matches(self):
+        return Match.find_by_room_id(self._id)
+
+
+
+
+
