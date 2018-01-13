@@ -13,7 +13,6 @@
 
 .last-5-table{
     background-color: rgb(98,98,98);
-    border-radius:12px;
     font-family: 'Oswald', sans-serif;
 }
 
@@ -78,13 +77,11 @@ label{
     background-color:rgb(228,228,228);
     color:black;
     font-family: 'News Cycle', sans-serif;
-    border-radius: 12px;
 }
 
 .recent-matches-div table{
     background-color:rgb(98,98,98);
     color:white;
-    border-radius:12px;
     text-align:center;
     font-family: 'Oswald', sans-serif;;
 }
