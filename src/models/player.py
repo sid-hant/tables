@@ -15,7 +15,6 @@ class Player(object):
         self.points = points
         self.room_id = room_id
 
-
     def save_to_mongo(self):
         Database.insert(collection='players', data=self.json())
 

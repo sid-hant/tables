@@ -1,6 +1,31 @@
+.form-butt{
+    width:100%;
+    align:center;
+}
+
+.table-body-class{
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+.leave-room-butt{
+    font-family: 'Pathway Gothic One', sans-serif;
+}
+
 .last-5-table{
-    background-color: rgb(48,48,48);
+    background-color: rgb(98,98,98);
     border-radius:12px;
+    font-family: 'Oswald', sans-serif;
+}
+
+.log-butt{
+
+    font-family: 'Pathway Gothic One', sans-serif;
+    font-size:20px;
+
+}
+
+label{
+    color:rgb(48,48,48);
 }
 
 .last-5{
@@ -11,6 +36,8 @@
 
 .togg-but{
     width:275px;
+    font-family: 'Pathway Gothic One', sans-serif;
+    font-size: 20px;
 }
 
 .card-body{
@@ -22,42 +49,44 @@
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: rgb(48,48,48);
+    background-color: rgb(98,98,98);
     color: white;
     padding: 0px;
     text-align: center;
+    font-family: 'News Cycle', sans-serif;
 }
 .settings form{
-    background-color:rgb(48,48,48);
+    background-color:rgb(228,228,228);
     color:white;
     padding: 8px;
-    font: arial;
+    font-family: 'Pathway Gothic One', sans-serif;
     font-size: 8px;
 }
 
 .match-label{
-    color:white;
-    font: arial;
+    color:black;
+    font-family: 'Oswald', sans-serif;
 }
 
 .labels-for-tables{
     text-align:center;
-    color:white;
-    font: arial;
+    color:rgb(98,98,98);
+    font-family: 'Oswald', sans-serif;
 }
 
 .table-headers{
-    background-color:white;
+    background-color:rgb(228,228,228);
     color:black;
-    font: arial;
+    font-family: 'News Cycle', sans-serif;
+    border-radius: 12px;
 }
 
 .recent-matches-div table{
-    background-color:rgb(48,48,48);
+    background-color:rgb(98,98,98);
     color:white;
     border-radius:12px;
     text-align:center;
-    font: arial;
+    font-family: 'Oswald', sans-serif;;
 }
 
 .table-match-leader{
@@ -77,14 +106,14 @@
 }
 
 .page-form{
-    padding-top: 18%;
+    padding-top: 12%;
     color: white;
 }
 
 .tables-main{
-    color:white;
+    color:rgb(98,98,98);
     padding-right: 20px;
-    font-size: 60px;
+    font-size: 80px;
 }
 
 .nav-bar-main{
@@ -97,14 +126,11 @@
 
 .room-id-text{
     font-size: 10px;
-    color: white;
+    color: black;
 }
 
 body{
-    background: rgb(98, 98, 98);
+    background: white;
 }
 
-.container {
-    background: rgb(98, 98, 98;
-}
 

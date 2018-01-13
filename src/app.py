@@ -11,26 +11,38 @@ app.secret_key = 'sid'
 def initialize_database():
     Database.initialize()
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def home_login():
-    if session['_id'] is None:
-        return render_template('login.html')
+    if request.method == 'POST':
+        if session['_id'] is None:
+            return render_template('login.html')
+        else:
+            redirect('/dashboard')
     else:
-        redirect('/dashboard')
+        return render_template('login.html')
+
+
 
 @app.route('/login')
 def login_p():
-    if session['_id'] is None:
-        return render_template('login.html')
+    if request.method == 'POST':
+        if session['_id'] is None:
+            return render_template('login.html')
+        else:
+            redirect('/dashboard')
     else:
-        redirect('/dashboard')
+        return render_template('login.html')
 
 @app.route('/register')
 def register_redirect():
-    if session['_id'] is None:
-        return render_template('register.html')
+    if request.method == 'POST':
+        if session['_id'] is None:
+            return render_template('register.html')
+        else:
+            redirect('/dashboard')
     else:
-        redirect('/dashboard')
+        return render_template('register.html')
+
 
 
 @app.route('/auth/register', methods=['POST', 'GET'])
@@ -143,12 +155,11 @@ def match_add():
             return redirect('/dashboard')
 
 
-
-@app.route('/logout', methods=['GET','POST'])
+@app.route('/logout', methods=['GET', 'POST'])
 def logout():
     session['_id'] = None
 
     return redirect('/')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=4999)

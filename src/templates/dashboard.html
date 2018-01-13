@@ -5,7 +5,7 @@
 <div class="container">
     <nav class="navbar navbar-toggler-left bg-inverse nav-bar-main">
         <h1 class="tables-main">tables</h1>
-        <a href="/logout"><button type="submit" class="btn btn-danger navbar-toggler-right">LEAVE ROOM</button></a>
+        <a href="/logout"><button type="submit" class="btn btn-outline-danger navbar-toggler-right leave-room-butt">LEAVE ROOM</button></a>
         <p class="room-id-text">Room ID: {{ room_id }}</p>
     </nav>
 </div>
@@ -14,7 +14,7 @@
 <div class="container row table-match-leader">
 
     <div class="col-md-4 settings">
-        <a class="btn btn-outline-light togg-but" data-toggle="collapse" href="#multiCollapseADDMATCH" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
+        <a class="btn btn-outline-secondary togg-but" data-toggle="collapse" href="#multiCollapseADDMATCH" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
          ADD MATCH
          </a>
         <div class="collapse multi-collapse" id="multiCollapseADDMATCH">
@@ -40,12 +40,12 @@
                         <label for="ppassword">PASSWORD</label>
                         <input type="password" id="ppassword" class="form-control" name="password">
                     </div>
-                    <button type="submit" class="btn btn-outline-light">ADD GAME</button>
+                    <button type="submit" class="btn btn-outline-success form-butt">ADD GAME</button>
                 </form>
             </div>
         </div>
         <br>
-        <a class="btn btn-outline-light togg-but" data-toggle="collapse" href="#multiCollapseADDPLAYER" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
+        <a class="btn btn-outline-secondary togg-but" data-toggle="collapse" href="#multiCollapseADDPLAYER" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
          ADD PLAYER
          </a>
         <div class="collapse multi-collapse" id="multiCollapseADDPLAYER">
@@ -59,12 +59,12 @@
                         <label for="password">PASSWORD</label>
                         <input type="password" id="password" class="form-control" name="password">
                     </div>
-                    <button type="submit" class="btn btn-outline-light">ADD PLAYER</button>
+                    <button type="submit" class="btn btn-outline-success form-butt">ADD PLAYER</button>
                 </form>
             </div>
         </div>
         <br>
-        <a class="btn btn-outline-light togg-but" data-toggle="collapse" href="#multiCollapseREMPLAYER" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
+        <a class="btn btn-outline-secondary togg-but" data-toggle="collapse" href="#multiCollapseREMPLAYER" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
          REMOVE PLAYER
          </a>
         <div class="collapse multi-collapse" id="multiCollapseREMPLAYER">
@@ -78,7 +78,7 @@
                         <label for="password">PASSWORD</label>
                         <input type="password" id="remove_password" class="form-control" name="password">
                     </div>
-                    <button type="submit" class="btn btn-outline-light">REMOVE PLAYER</button>
+                    <button type="submit" class="btn btn-outline-danger form-butt">REMOVE PLAYER</button>
                 </form>
             </div>
 
@@ -88,13 +88,13 @@
                 <table class="table table-condensed last-5-table">
                     <thead>
                         <tr class="table-headers">
-                            <th scope="col">NAME</th>
+                            <th scope="col">Name</th>
                             <th scope="col"></th>
-                            <th scope="col">SCORE</th>
+                            <th scope="col">Score</th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="table-body-class">
                         {% for match in matches %}
                         <tr>
                             <td>{{ match.p1 }}</td>
@@ -122,7 +122,7 @@
                     <th scope="col">P</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="table-body-class">
                 {% for player in players %}
                 <tr>
                     <td>{{ player.name }}</td>
