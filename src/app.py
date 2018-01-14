@@ -20,9 +20,12 @@ def home_login():
         if session['_id'] is None:
             return render_template('login.html')
         else:
-            redirect('/dashboard')
+           return redirect('/dashboard')
     else:
-        return render_template('login.html')
+        if session['_id'] is None:
+            return render_template('login.html')
+        else:
+            return redirect('/dashboard')
 
 
 @app.route('/login')
@@ -31,9 +34,12 @@ def login_p():
         if session['_id'] is None:
             return render_template('login.html')
         else:
-            redirect('/dashboard')
+           return redirect('/dashboard')
     else:
-        return render_template('login.html')
+        if session['_id'] is None:
+            return render_template('login.html')
+        else:
+           return redirect('/dashboard')
 
 
 @app.route('/register')
@@ -42,9 +48,12 @@ def register_redirect():
         if session['_id'] is None:
             return render_template('register.html')
         else:
-            redirect('/dashboard')
+           return redirect('/dashboard')
     else:
-        return render_template('register.html')
+        if session['_id'] is None:
+            return render_template('register.html')
+        else:
+           return redirect('/dashboard')
 
 
 @app.route('/auth/register', methods=['POST', 'GET'])
@@ -106,6 +115,7 @@ def create_new_player():
             return redirect('/dashboard')
         else:
             return redirect('/dashboard')
+
 
 @app.route('/setting/points', methods=['GET','POST'])
 def change_points():
