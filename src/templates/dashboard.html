@@ -6,6 +6,8 @@
     <nav class="navbar navbar-toggler-left bg-inverse nav-bar-main">
         <h1 class="tables-main">tables</h1>
         <a href="/logout"><button type="submit" class="btn btn-outline-danger navbar-toggler-right leave-room-butt">LEAVE ROOM</button></a>
+         <a href=""><button type="submit" class="btn btn-outline-info navbar-toggler-right leave-room-butt">HELP</button></a>
+        <a href=""><button type="submit" class="btn btn-outline-primary navbar-toggler-right leave-room-butt">Made By Sidhant</button></a>
         <p class="room-id-text">Room ID: {{ room_id }}</p>
     </nav>
 </div>
@@ -19,7 +21,7 @@
          </a>
         <div class="collapse multi-collapse" id="multiCollapseADDMATCH">
             <div class="card card-body">
-                <form id="form-add-match" action="/matches/add" method="post">
+                <form class="form-add" action="/matches/add" method="post">
                     <div class="form-group">
                         <label for="p1">PLAYER NAME(1)</label>
                         <input type="text" id="p1" class="form-control" name="p1">
@@ -50,7 +52,7 @@
          </a>
         <div class="collapse multi-collapse" id="multiCollapseADDPLAYER">
             <div class="card card-body">
-                <form id="form-add" action="/players/add" method="post">
+                <form class="form-add" action="/players/add" method="post">
                     <div class="form-group">
                         <label for="player_name">NAME</label>
                         <input type="text" id="player_name" class="form-control" name="player_name">
@@ -69,7 +71,7 @@
          </a>
         <div class="collapse multi-collapse" id="multiCollapseREMPLAYER">
             <div class="card card-body">
-                <form id="form-remove" action="/players/remove" method="post">
+                <form class="form-add" action="/players/remove" method="post">
                     <div class="form-group">
                         <label for="player_name">NAME</label>
                         <input type="text" id="remove_player_name" class="form-control" name="player_name">
@@ -81,26 +83,56 @@
                     <button type="submit" class="btn btn-outline-danger form-butt">REMOVE PLAYER</button>
                 </form>
             </div>
+        </div>
+        <br>
+
+        <a class="btn btn-outline-secondary togg-but" data-toggle="collapse" href="#multiCollapseSETTINGS" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
+         SETTINGS
+         </a>
+        <div class="collapse multi-collapse" id="multiCollapseSETTINGS">
+            <div class="card card-body">
+
+                <form class="form-add" action="/setting/points" method="post">
+                    <div class="form-group">
+                        <label for="ppw">POINTS PER WIN</label>
+                        <input type="number" id="ppw" class="form-control" name="ppw">
+                    </div>
+                    <div class="form-group">
+                        <label for="ppd">POINTS PER DRAW</label>
+                        <input type="number" id="ppd" class="form-control" name="ppd">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">PASSWORD</label>
+                        <input type="password" id="ppw_pass" class="form-control" name="password">
+                    </div>
+                    <button type="submit" class="btn btn-outline-success form-butt">UPDATE</button>
+                </form>
+
+
+
+            </div>
 
         </div>
+
               <div class="container last-5">
                 <h4 class="labels-for-tables">LAST 5 MATCHES</h4>
-                <table class="table table-condensed last-5-table">
+                <table class="table last-5-table">
                     <thead>
                         <tr class="table-headers">
-                            <th scope="col">Name</th>
-                            <th scope="col"></th>
-                            <th scope="col">Score</th>
-                            <th scope="col"></th>
+                            <th scope="col" class="table-match-label">Name</th>
+                            <th scope="col" class="table-match-label">Score</th>
+                            <th scope="col" class="table-match-label">Score</th>
+                            <th scope="col" class="table-match-label">Name</th>
                         </tr>
                     </thead>
-                    <tbody class="table-body-class">
+                    <tbody class="table-body-class" id="table-top-5-body">
                         {% for match in matches %}
                         <tr>
                             <td>{{ match.p1 }}</td>
+                            <td>({{ match.p1score }})</td>
+                            <td>({{ match.p2score }})</td>
                             <td>{{ match.p2 }}</td>
-                            <td>{{ match.p1score }}</td>
-                            <td>{{ match.p2score }}</td>
+
                         </tr>
                         {% endfor %}
                     </tbody>
@@ -119,6 +151,7 @@
                     <th scope="col">GP</th>
                     <th scope="col">W</th>
                     <th scope="col">L</th>
+                    <th scope="col">D</th>
                     <th scope="col">P</th>
                 </tr>
             </thead>
@@ -129,6 +162,7 @@
                     <td>{{ player.games_played }}</td>
                     <td>{{ player.wins }}</td>
                     <td>{{ player.loss }}</td>
+                    <td>{{ player.draw }}</td>
                     <td>{{ player.points }}</td>
                 </tr>
                 {% endfor %}

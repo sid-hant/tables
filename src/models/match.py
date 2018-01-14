@@ -3,7 +3,9 @@ from src.common.database import Database
 import datetime
 from src.models.player import Player
 
+
 class Match(object):
+
     def __init__(self, p1, p2, p1score, p2score, room_id, date=None, _id=None):
         self._id = self._id = uuid.uuid4().hex if _id is None else _id
         self.p1 = p1

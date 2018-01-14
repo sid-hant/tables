@@ -3,6 +3,7 @@ from src.common.database import Database
 from flask import session
 from src.models.player import Player
 from src.models.match import Match
+from src.models.points import Points
 
 
 class Room(object):
@@ -45,7 +46,8 @@ class Room(object):
 
     @staticmethod
     def new_player(name, room_id):
-        player = Player(name, 0, 0, 0, 0, room_id)
+        name = name.upper()
+        player = Player(name, 0, 0, 0, 0, 0, room_id)
         player.save_to_mongo()
 
     @staticmethod
@@ -55,6 +57,7 @@ class Room(object):
 
     @staticmethod
     def remove_player(name):
+        name = name.upper()
         find_player = Player.find_by_name(name)
         if find_player is not None:
             find_player.remove_from_mongo()
@@ -63,6 +66,10 @@ class Room(object):
 
     @staticmethod
     def update_table(p1, p2, p1score, p2score):
+        p1 = p1.upper()
+        p2 = p2.upper()
+        room_id = session['_id']
+        points = Points.get_points(room_id)
         player1_data = Database.find_one("players", {"name": p1})
         player2_data = Database.find_one("players", {"name": p2})
         if player1_data and player2_data is not None:
@@ -70,7 +77,7 @@ class Room(object):
                 winner = Player.find_by_name(p1)
                 winner.wins = winner.wins + 1
                 winner.games_played = winner.games_played + 1
-                winner.points = winner.points + 3
+                winner.points = winner.points + int(points.ppw)
 
                 loser = Player.find_by_name(p2)
                 loser.loss = loser.loss + 1
@@ -79,11 +86,11 @@ class Room(object):
                 winner.update_mongo()
                 loser.update_mongo()
 
-            else:
+            elif p2score > p1score:
                 winner = Player.find_by_name(p2)
                 winner.wins = winner.wins + 1
                 winner.games_played = winner.games_played + 1
-                winner.points = winner.points + 3
+                winner.points = winner.points + int(points.ppw)
 
                 loser = Player.find_by_name(p1)
                 loser.loss = loser.loss + 1
@@ -91,6 +98,19 @@ class Room(object):
 
                 winner.update_mongo()
                 loser.update_mongo()
+
+            else:
+                p1 = Player.find_by_name(p1)
+                p2 = Player.find_by_name(p2)
+
+                p1.draw = p1.draw + int(points.ppd)
+                p2.draw = p2.draw + int(points.ppd)
+                p1.points = p1.points + 1
+                p2.points = p2.points + 1
+
+                p1.update_mongo()
+                p2.update_mongo()
+
         else:
             return None
 

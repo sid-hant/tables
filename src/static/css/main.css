@@ -1,11 +1,26 @@
+.login-form-label{
+    font-family: 'News Cycle', sans-serif;
+}
+
+#table-match-label{
+    background-color:rgb(228,228,228);
+
+}
+
 .form-butt{
     width:100%;
     align:center;
 }
 
+.form-add label{
+    font-family: 'News Cycle', sans-serif;
+    font-size: 7.5px;
+}
+
 .table-body-class{
     font-family: 'Roboto Condensed', sans-serif;
 }
+
 
 .leave-room-butt{
     font-family: 'Pathway Gothic One', sans-serif;
@@ -17,10 +32,8 @@
 }
 
 .log-butt{
-
     font-family: 'Pathway Gothic One', sans-serif;
     font-size:20px;
-
 }
 
 label{
@@ -44,6 +57,7 @@ label{
 }
 
 .foot{
+    padding-top: 14px;
     position: fixed;
     left: 0;
     bottom: 0;

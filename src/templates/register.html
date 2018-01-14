@@ -6,7 +6,7 @@
    </div>
    <form class="login-form" action="/auth/register" method="post">
       <div class="form-group">
-         <label for="password">PASSWORD</label>
+         <label for="password" class="login-form-label">PASSWORD</label>
          <input type="password" id="password" class="form-control" name="password">
       </div>
       <h5>{{ error_msg }}</h5>
@@ -16,4 +16,11 @@
 <div class="container sign-up-div">
    <a href="/login"><button class="btn btn-outline-warning sign-up log-butt">LOG IN</button></a>
 </div>
+
+<div class="navbar navbar-inverse navbar-fixed-bottom foot" role="navigation">
+    <div class="container">
+        <div class="navbar-text pull-left">
+            <p>© made by sid | user-guide</p>
+        </div>
+    </div>
 {% endblock %}

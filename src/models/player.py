@@ -3,13 +3,13 @@ from src.common.database import Database
 from flask import session
 from operator import itemgetter
 
-
 class Player(object):
 
-    def __init__(self, name, games_played, wins, loss, points, room_id, _id=None):
+    def __init__(self, name, games_played, wins, draw, loss, points, room_id, _id=None):
         self._id = self._id = uuid.uuid4().hex if _id is None else _id
         self.name = name
         self.wins = wins
+        self.draw = draw
         self.games_played = games_played
         self.loss = loss
         self.points = points
@@ -33,6 +33,7 @@ class Player(object):
             "name": self.name,
             "wins": self.wins,
             "loss": self.loss,
+            "draw": self.draw,
             "points": self.points,
             "games_played": self.games_played,
             "room_id": self.room_id,
@@ -61,9 +62,11 @@ class Player(object):
 
     @classmethod
     def find_by_name(cls, name):
+        name = name.upper()
         data = Database.find_one("players", {"name": name})
         if data is not None:
             return cls(**data)
+
         return None
 
 

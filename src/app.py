@@ -2,14 +2,17 @@ from flask import Flask, render_template, request, session, make_response, redir
 from src.common.database import Database
 from src.models.room import Room
 from src.models.player import Player
+from src.models.points import Points
 
 app = Flask(__name__)
 
 app.secret_key = 'sid'
 
+
 @app.before_first_request
 def initialize_database():
     Database.initialize()
+
 
 @app.route('/', methods=['GET', 'POST'])
 def home_login():
@@ -22,7 +25,6 @@ def home_login():
         return render_template('login.html')
 
 
-
 @app.route('/login')
 def login_p():
     if request.method == 'POST':
@@ -32,6 +34,7 @@ def login_p():
             redirect('/dashboard')
     else:
         return render_template('login.html')
+
 
 @app.route('/register')
 def register_redirect():
@@ -44,26 +47,19 @@ def register_redirect():
         return render_template('register.html')
 
 
-
 @app.route('/auth/register', methods=['POST', 'GET'])
 def register_room():
     password = request.form['password']
     room = Room(password)
     room.save_to_mongo()
     session['_id'] = room._id
-
+    point = Points(room._id, 3, 1)
+    point.save_to_mongo()
     if password is "" or None:
         session['_id'] = None
         return redirect('/register')
-
-    room = Room.find_by_id(session['_id'])
-    matches = room.get_matches()
-    top_five_matches = []
-    for match in matches:
-        top_five_matches.append(match)
-        if len(top_five_matches)==5:
-            break
     return redirect('/dashboard')
+
 
 @app.route('/auth/login', methods=['POST', 'GET'])
 def login_room():
@@ -72,21 +68,14 @@ def login_room():
 
     if Room.login_valid(room_id, password):
         Room.login(room_id)
-        room = Room.find_by_id(session['_id'])
-        matches = room.get_matches()
-        top_five_matches = []
-        for match in matches:
-            top_five_matches.append(match)
-            if len(top_five_matches) == 5:
-                break
         return redirect('/dashboard')
     else:
         session['_id'] = None
         return redirect('/login')
 
+
 @app.route('/dashboard', methods=['GET','POST'])
 def dashboard_template(error_msg=""):
-
     if session['_id'] is None:
         return redirect('/login')
     else:
@@ -110,9 +99,30 @@ def create_new_player():
         name = request.form['player_name']
         password = request.form['password']
         _id = session['_id']
+        name = name.upper()
         room = Room.find_by_id(_id)
         if room.password == password and name is not None:
             room.new_player(name, _id)
+            return redirect('/dashboard')
+        else:
+            return redirect('/dashboard')
+
+@app.route('/setting/points', methods=['GET','POST'])
+def change_points():
+    if request.method == 'GET':
+        return make_response(dashboard_template)
+    else:
+        ppw = request.form['ppw']
+        ppd = request.form['ppd']
+        password = request.form['password']
+        _id = session['_id']
+        room = Room.find_by_id(_id)
+
+        if room.password == password:
+            points = Points.get_points(_id)
+            points.ppd = ppd
+            points.ppw = ppw
+            points.update_mongo()
             return redirect('/dashboard')
         else:
             return redirect('/dashboard')
@@ -126,6 +136,7 @@ def remove_player():
         name = request.form['player_name']
         password = request.form['password']
         _id = session['_id']
+        name = name.upper()
         room = Room.find_by_id(_id)
         if room.password == password and Player.find_by_name(name):
             player = Player.find_by_name(name)
@@ -134,6 +145,7 @@ def remove_player():
         else:
             return redirect('/dashboard')
 
+
 @app.route('/matches/add', methods=['GET','POST'])
 def match_add():
     if request.method == 'GET':
@@ -141,6 +153,8 @@ def match_add():
     else:
         p1 = request.form['p1']
         p2 = request.form['p2']
+        p1 = p1.upper()
+        p2 = p2.upper()
         p1score = request.form['p1score']
         p2score = request.form['p2score']
         password = request.form['password']
