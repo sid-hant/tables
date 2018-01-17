@@ -59,15 +59,17 @@ def register_redirect():
 @app.route('/auth/register', methods=['POST', 'GET'])
 def register_room():
     password = request.form['password']
-    room = Room(password)
-    room.save_to_mongo()
-    session['_id'] = room._id
-    point = Points(room._id, 3, 1)
-    point.save_to_mongo()
-    if password is "" or None:
+    if len(password)>=8:
+        room = Room(password)
+        room.save_to_mongo()
+        session['_id'] = room._id
+        point = Points(room._id, 3, 1)
+        point.save_to_mongo()
+        return redirect('/dashboard')
+    else:
         session['_id'] = None
         return redirect('/register')
-    return redirect('/dashboard')
+
 
 
 @app.route('/auth/login', methods=['POST', 'GET'])
