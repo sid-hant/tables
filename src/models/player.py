@@ -1,7 +1,6 @@
 import uuid
 from src.common.database import Database
-from flask import session
-from operator import itemgetter
+
 
 class Player(object):
 
@@ -66,9 +65,7 @@ class Player(object):
         data = Database.find_one("players", {"name": name})
         if data is not None:
             return cls(**data)
-
         return None
-
 
 
 

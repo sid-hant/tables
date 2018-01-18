@@ -8,9 +8,10 @@ from src.models.points import Points
 
 class Room(object):
 
-    def __init__(self, password, _id=None):
+    def __init__(self, password, name, _id=None):
         self._id = self._id = uuid.uuid4().hex if _id is None else _id
         self.password = password
+        self.name = name
 
     def save_to_mongo(self):
         Database.insert(collection='rooms', data=self.json())
@@ -19,6 +20,7 @@ class Room(object):
         return {
             "password": self.password,
             "_id": self._id,
+            "name": self.name
         }
 
     @classmethod
@@ -63,6 +65,13 @@ class Room(object):
             find_player.remove_from_mongo()
         else:
             return None
+
+    def remove_room(self):
+        _id = self._id
+        Database.remove('pointssetting', {'_id':_id})
+        Database.remove('players', {'room_id':_id})
+        Database.remove('matches', {'room_id': _id})
+        Database.remove(collection='rooms', data=self.json())
 
     @staticmethod
     def update_table(p1, p2, p1score, p2score):

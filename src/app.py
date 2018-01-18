@@ -59,8 +59,10 @@ def register_redirect():
 @app.route('/auth/register', methods=['POST', 'GET'])
 def register_room():
     password = request.form['password']
-    if len(password)>=8:
-        room = Room(password)
+    password_2= request.form['confirm_password']
+    name = request.form['name']
+    if len(password)>=8 and len(name)<20 and password == password_2:
+        room = Room(password, name)
         room.save_to_mongo()
         session['_id'] = room._id
         point = Points(room._id, 3, 1)
@@ -69,6 +71,19 @@ def register_room():
     else:
         session['_id'] = None
         return redirect('/register')
+
+
+@app.route('/delete-room', methods=['POST', 'GET'])
+def delete_room():
+    password = request.form['password']
+    password_2 = request.form['confirm_password']
+    room = Room.find_by_id(session['_id'])
+    if password == room.password and password_2 == room.password:
+        room.remove_room()
+        session['_id'] = None
+        return redirect('/')
+    else:
+        return redirect('/dashboard')
 
 
 
@@ -86,7 +101,7 @@ def login_room():
 
 
 @app.route('/dashboard', methods=['GET','POST'])
-def dashboard_template(error_msg=""):
+def dashboard_template():
     if session['_id'] is None:
         return redirect('/login')
     else:
@@ -99,7 +114,7 @@ def dashboard_template(error_msg=""):
             top_five_matches.append(match)
             if len(top_five_matches)==5:
                 break
-        return render_template('dashboard.html', room_id=session['_id'], matches=top_five_matches, players=players, error_msg=error_msg)
+        return render_template('dashboard.html', room_id=session['_id'], matches=top_five_matches, players=players, room_name=room.name.upper())
 
 
 @app.route('/players/add', methods=['GET','POST'])

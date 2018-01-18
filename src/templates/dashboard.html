@@ -12,10 +12,10 @@
     </nav>
 </div>
 <!--End Nav Bar-->
-
 <div class="container row table-match-leader">
 
     <div class="col-md-4 settings">
+        <p id="room_name_id">{{ room_name }}</p>
         <a class="btn btn-outline-secondary togg-but" data-toggle="collapse" href="#multiCollapseADDMATCH" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
          ADD MATCH
          </a>
@@ -112,6 +112,27 @@
 
             </div>
 
+
+        </div>
+                    <br>
+
+            <a class="btn btn-danger togg-but" data-toggle="collapse" href="#multiCollapseDELETEROOM" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
+         DELETE ROOM
+         </a>
+        <div class="collapse multi-collapse" id="multiCollapseDELETEROOM">
+            <div class="card card-body">
+                <form class="form-add" action="/delete-room" method="post">
+                    <div class="form-group">
+                        <label for="password">PASSWORD</label>
+                        <input type="password" class="form-control" name="password">
+                    </div>
+                     <div class="form-group">
+                        <label for="confirm_password">CONFIRM PASSWORD</label>
+                        <input type="password" id="confirm_password" class="form-control" name="confirm_password">
+                    </div>
+                    <button type="submit" class="btn btn-danger form-butt">DELETE ROOM</button>
+                </form>
+            </div>
         </div>
 
               <div class="container last-5">
