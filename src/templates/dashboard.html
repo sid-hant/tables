@@ -6,7 +6,7 @@
     <nav class="navbar navbar-toggler-left bg-inverse nav-bar-main">
         <h1 class="tables-main">tables</h1>
         <a href="/logout"><button type="submit" class="btn btn-outline-danger navbar-toggler-right leave-room-butt">LEAVE ROOM</button></a>
-         <a href="https://docs.google.com/document/d/1tC4qbq-6k7bVNk4xTGUrVT59FhQvbJ_ocmVoWYIZTvU/edit?usp=sharing" target="_blank"><button type="submit" class="btn btn-outline-info navbar-toggler-right leave-room-butt">HELP</button></a>
+        <a href="https://docs.google.com/document/d/1tC4qbq-6k7bVNk4xTGUrVT59FhQvbJ_ocmVoWYIZTvU/edit?usp=sharing" target="_blank"><button type="submit" class="btn btn-outline-info navbar-toggler-right leave-room-butt">HELP</button></a>
         <a href="https://sid-hant.github.io/" target="_blank"><button type="submit" class="btn btn-outline-primary navbar-toggler-right leave-room-butt">MADE BY SIDHANT</button></a>
         <p class="room-id-text">Room ID: {{ room_id }}</p>
     </nav>
@@ -87,7 +87,7 @@
         <br>
 
         <a class="btn btn-outline-secondary togg-but" data-toggle="collapse" href="#multiCollapseSETTINGS" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
-         SETTINGS
+         POINTS SETTINGS
          </a>
         <div class="collapse multi-collapse" id="multiCollapseSETTINGS">
             <div class="card card-body">
@@ -114,9 +114,9 @@
 
 
         </div>
-                    <br>
+        <br>
 
-            <a class="btn btn-danger togg-but" data-toggle="collapse" href="#multiCollapseDELETEROOM" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
+        <a class="btn btn-danger togg-but" data-toggle="collapse" href="#multiCollapseDELETEROOM" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
          DELETE ROOM
          </a>
         <div class="collapse multi-collapse" id="multiCollapseDELETEROOM">
@@ -126,7 +126,7 @@
                         <label for="password">PASSWORD</label>
                         <input type="password" class="form-control" name="password">
                     </div>
-                     <div class="form-group">
+                    <div class="form-group">
                         <label for="confirm_password">CONFIRM PASSWORD</label>
                         <input type="password" id="confirm_password" class="form-control" name="confirm_password">
                     </div>
@@ -135,30 +135,30 @@
             </div>
         </div>
 
-              <div class="container last-5">
-                <h4 class="labels-for-tables">LAST 5 MATCHES</h4>
-                <table class="table last-5-table">
-                    <thead>
-                        <tr class="table-headers">
-                            <th scope="col" class="table-match-label">Name</th>
-                            <th scope="col" class="table-match-label">Score</th>
-                            <th scope="col" class="table-match-label">Score</th>
-                            <th scope="col" class="table-match-label">Name</th>
-                        </tr>
-                    </thead>
-                    <tbody class="table-body-class" id="table-top-5-body">
-                        {% for match in matches %}
-                        <tr>
-                            <td>{{ match.p1 }}</td>
-                            <td>({{ match.p1score }})</td>
-                            <td>({{ match.p2score }})</td>
-                            <td>{{ match.p2 }}</td>
+        <div class="container last-5">
+            <h4 class="labels-for-tables">LAST 5 MATCHES</h4>
+            <table class="table last-5-table">
+                <thead>
+                    <tr class="table-headers">
+                        <th scope="col" class="table-match-label">Name</th>
+                        <th scope="col" class="table-match-label">Score</th>
+                        <th scope="col" class="table-match-label">Score</th>
+                        <th scope="col" class="table-match-label">Name</th>
+                    </tr>
+                </thead>
+                <tbody class="table-body-class" id="table-top-5-body">
+                    {% for match in matches %}
+                    <tr>
+                        <td>{{ match.p1 }}</td>
+                        <td>({{ match.p1score }})</td>
+                        <td>({{ match.p2score }})</td>
+                        <td>{{ match.p2 }}</td>
 
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
 
     </div>
 
@@ -191,6 +191,5 @@
         </table>
     </div>
 </div>
-
 
 {% endblock %}

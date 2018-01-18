@@ -86,12 +86,10 @@ def delete_room():
         return redirect('/dashboard')
 
 
-
 @app.route('/auth/login', methods=['POST', 'GET'])
 def login_room():
     room_id = request.form['room_id']
     password = request.form['password']
-
     if Room.login_valid(room_id, password):
         Room.login(room_id)
         return redirect('/dashboard')
@@ -144,7 +142,6 @@ def change_points():
         password = request.form['password']
         _id = session['_id']
         room = Room.find_by_id(_id)
-
         if room.password == password:
             points = Points.get_points(_id)
             points.ppd = ppd
