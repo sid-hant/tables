@@ -1,8 +1,9 @@
 from flask import Flask, render_template, request, session, make_response, redirect
+
 from src.common.database import Database
-from src.models.room import Room
 from src.models.player import Player
 from src.models.points import Points
+from src.models.room import Room
 
 app = Flask(__name__)
 
@@ -132,7 +133,7 @@ def create_new_player():
             return redirect('/dashboard')
 
 
-@app.route('/setting/points', methods=['GET','POST'])
+@app.route('/setting/point', methods=['GET','POST'])
 def change_points():
     if request.method == 'GET':
         return make_response(dashboard_template)
@@ -201,3 +202,4 @@ def logout():
 
 if __name__ == '__main__':
     app.run(debug=True, port=4999)
+

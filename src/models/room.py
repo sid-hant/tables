@@ -1,8 +1,10 @@
 import uuid
-from src.common.database import Database
+
 from flask import session
-from src.models.player import Player
+
+from src.common.database import Database
 from src.models.match import Match
+from src.models.player import Player
 from src.models.points import Points
 
 

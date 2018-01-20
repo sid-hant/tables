@@ -1,7 +1,7 @@
-import uuid
-from src.common.database import Database
 import datetime
-from src.models.player import Player
+import uuid
+
+from src.common.database import Database
 
 
 class Match(object):
