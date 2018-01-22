@@ -1,15 +1,18 @@
+# importing libraries to use
 from flask import Flask, render_template, request, session, make_response, redirect
-
 from src.common.database import Database
 from src.models.player import Player
 from src.models.points import Points
 from src.models.room import Room
 
+# initializing the flask app
 app = Flask(__name__)
 
+# secret key
 app.secret_key = 'sid'
 
 
+# initializing the database
 @app.before_first_request
 def initialize_database():
     Database.initialize()
@@ -21,7 +24,7 @@ def home_login():
         if session['_id'] is None:
             return render_template('login.html')
         else:
-           return redirect('/dashboard')
+            return redirect('/dashboard')
     else:
         if session['_id'] is None:
             return render_template('login.html')
@@ -35,12 +38,12 @@ def login_p():
         if session['_id'] is None:
             return render_template('login.html')
         else:
-           return redirect('/dashboard')
+            return redirect('/dashboard')
     else:
         if session['_id'] is None:
             return render_template('login.html')
         else:
-           return redirect('/dashboard')
+            return redirect('/dashboard')
 
 
 @app.route('/register')
@@ -49,20 +52,20 @@ def register_redirect():
         if session['_id'] is None:
             return render_template('register.html')
         else:
-           return redirect('/dashboard')
+            return redirect('/dashboard')
     else:
         if session['_id'] is None:
             return render_template('register.html')
         else:
-           return redirect('/dashboard')
+            return redirect('/dashboard')
 
 
 @app.route('/auth/register', methods=['POST', 'GET'])
 def register_room():
     password = request.form['password']
-    password_2= request.form['confirm_password']
+    password_2 = request.form['confirm_password']
     name = request.form['name']
-    if len(password)>=8 and len(name)<20 and password == password_2:
+    if len(password) >= 8 and len(name) < 20 and password == password_2:
         room = Room(password, name)
         room.save_to_mongo()
         session['_id'] = room._id
@@ -71,7 +74,7 @@ def register_room():
         return redirect('/dashboard')
     else:
         session['_id'] = None
-        return redirect('/register')
+        return render_template('registeration-failed.html')
 
 
 @app.route('/delete-room', methods=['POST', 'GET'])
@@ -96,7 +99,7 @@ def login_room():
         return redirect('/dashboard')
     else:
         session['_id'] = None
-        return redirect('/login')
+        return render_template('login-failed.html')
 
 
 @app.route('/dashboard', methods=['GET','POST'])
@@ -111,15 +114,34 @@ def dashboard_template():
         top_five_matches = []
         for match in matches:
             top_five_matches.append(match)
-            if len(top_five_matches)==5:
+            if len(top_five_matches) == 5:
                 break
-        return render_template('dashboard.html', room_id=session['_id'], matches=top_five_matches, players=players, room_name=room.name.upper())
+        return render_template('dashboard.html', room_id=session['_id'], matches=top_five_matches,
+                               players=players, room_name=room.name.upper())
 
 
-@app.route('/players/add', methods=['GET','POST'])
+@app.route('/dashboard-error', methods=['GET','POST'])
+def dashboard_error_template():
+    if session['_id'] is None:
+        return redirect('/login')
+    else:
+        room = Room.find_by_id(session['_id'])
+        matches = room.get_matches()
+        room = Room.find_by_id(session['_id'])
+        players = room.get_players()
+        top_five_matches = []
+        for match in matches:
+            top_five_matches.append(match)
+            if len(top_five_matches) == 5:
+                break
+        return render_template('dashboard-failed.html', room_id=session['_id'], matches=top_five_matches,
+                               players=players, room_name=room.name.upper())
+
+
+@app.route('/players/add', methods=['GET', 'POST'])
 def create_new_player():
     if request.method == 'GET':
-        return make_response(dashboard_template)
+        return redirect('/dashboard')
     else:
         name = request.form['player_name']
         password = request.form['password']
@@ -130,10 +152,10 @@ def create_new_player():
             room.new_player(name, _id)
             return redirect('/dashboard')
         else:
-            return redirect('/dashboard')
+            return redirect('/dashboard-error')
 
 
-@app.route('/setting/point', methods=['GET','POST'])
+@app.route('/setting/points', methods=['GET','POST'])
 def change_points():
     if request.method == 'GET':
         return make_response(dashboard_template)
@@ -150,7 +172,7 @@ def change_points():
             points.update_mongo()
             return redirect('/dashboard')
         else:
-            return redirect('/dashboard')
+            return redirect('/dashboard-error')
 
 
 @app.route('/players/remove', methods=['GET', 'POST'])
@@ -168,13 +190,32 @@ def remove_player():
             player.remove_from_mongo()
             return redirect('/dashboard')
         else:
-            return redirect('/dashboard')
+            return redirect('/dashboard-error')
+
+
+@app.route('/stats', methods=['GET', 'POST'])
+def stat():
+    if request.method == 'GET':
+        return redirect('/dashboard')
+    else:
+        name = request.form['player_name']
+        _id = session['_id']
+        room = Room.find_by_id(_id)
+        player = Player.find_by_name(name)
+        matches = room.get_matches()
+        player_match = []
+        for match in matches:
+            if match.p1 == player.name or match.p2 == player.name:
+                player_match.append(match)
+            else:
+                pass
+        return render_template('stat.html', player=player, matches=player_match)
 
 
 @app.route('/matches/add', methods=['GET','POST'])
 def match_add():
     if request.method == 'GET':
-        return render_template('match.html', room_id=session['_id'])
+        return redirect('/dashboard')
     else:
         p1 = request.form['p1']
         p2 = request.form['p2']
@@ -191,7 +232,7 @@ def match_add():
             room.update_table(p1,p2,p1score,p2score)
             return redirect('/dashboard')
         else:
-            return redirect('/dashboard')
+            return redirect('/dashboard-error')
 
 
 @app.route('/logout', methods=['GET', 'POST'])
@@ -201,5 +242,5 @@ def logout():
     return redirect('/')
 
 if __name__ == '__main__':
-    app.run(debug=True, port=4999)
+    app.run(debug=True)
 

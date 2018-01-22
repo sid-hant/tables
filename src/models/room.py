@@ -51,7 +51,7 @@ class Room(object):
     @staticmethod
     def new_player(name, room_id):
         name = name.upper()
-        player = Player(name, 0, 0, 0, 0, 0, room_id)
+        player = Player(name,0,0,0,0,0,room_id)
         player.save_to_mongo()
 
     @staticmethod

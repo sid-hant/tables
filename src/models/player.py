@@ -33,7 +33,7 @@ class Player(object):
             "wins": self.wins,
             "loss": self.loss,
             "draw": self.draw,
-            "point": self.points,
+            "points": self.points,
             "games_played": self.games_played,
             "room_id": self.room_id,
             "_id": self._id
@@ -53,7 +53,7 @@ class Player(object):
 
     @classmethod
     def find_by_room_id(cls, _id):
-        players_data = Database.sort("players", {"room_id": _id}, 'point')
+        players_data = Database.sort("players", {"room_id": _id}, "points")
         if players_data is None:
             return None
         else:

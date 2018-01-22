@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container">
+
+    <h1 class="tables-main table-stat">tables stat for <i>{{ player.name.lower() }}</i>:</h1>
+    <br>
+    <br>
+    <h4 class="labels-for-tables">CURRENT STAT</h4>
+
+    <table class="table">
+            <thead>
+                <tr class="table-headers">
+                    <th scope="col">GAMES PLAYED</th>
+                    <th scope="col">WINS</th>
+                    <th scope="col">LOSS</th>
+                    <th scope="col">DRAWS</th>
+                    <th scope="col">POINTS EARNED</th>
+                    <th scope="col">TOURNEYS WON</th>
+                </tr>
+            </thead>
+            <tbody class="table-body-class stat-bg">
+                <tr>
+                    <td>{{ player.games_played }}</td>
+                    <td>{{ player.wins }}</td>
+                    <td>{{ player.loss }}</td>
+                    <td>{{ player.draw }}</td>
+                    <td>{{ player.points }}</td>
+                </tr>
+            </tbody>
+        </table>
+    <br>
+    <br>
+
+
+    <div class="container last-5">
+                <h4 class="labels-for-tables">MATCHES</h4>
+            <table class="table last-5-table">
+                <thead>
+                    <tr class="table-headers">
+                        <th scope="col" class="table-match-label">Name</th>
+                        <th scope="col" class="table-match-label">Score</th>
+                        <th scope="col" class="table-match-label">Score</th>
+                        <th scope="col" class="table-match-label">Name</th>
+                    </tr>
+                </thead>
+                <tbody class="table-body-class" id="table-top-5-body">
+                    {% for match in matches %}
+                    <tr>
+                        <td>{{ match.p1 }}</td>
+                        <td>({{ match.p1score }})</td>
+                        <td>({{ match.p2score }})</td>
+                        <td>{{ match.p2 }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+</div>
+
+{% endblock %}

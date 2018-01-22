@@ -116,10 +116,6 @@ label{
     padding-top: 5px;
 }
 
-.login-page{
-    background-image: url("login-bg.jpg");
-}
-
 .login-form{
     max-width: 350px;
 }
