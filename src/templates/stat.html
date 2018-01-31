@@ -8,13 +8,13 @@
 
     <div class="container row table-match-leader table-body-class">
         <div class="col-sm stat-col">
-            <h4 class="labels-for-tables-stat">CURRENT STATS</h4>
+            <h4 class="labels-for-tables-stat">CURRENT SEASON</h4>
             <p>GAMES PLAYED: <strong>{{ player.games_played }}</strong></p>
             <p>GAMES WON: <strong>{{ player.wins }}</strong></p>
             <p>GAMES LOST: <strong>{{ player.loss }}</strong></p>
             <p>GAMES DREW: <strong>{{ player.draw }}</strong></p>
             <p>POINTS EARNED: <strong>{{ player.points }}</strong></p>
-            <p>TROPHIES WON: <strong>{{ player.tourneys_won }}</strong></p>
+            <p>WIN RATE: <strong>{{ current_rate }}%</strong></p>
             <br>
             <div>
                 <h4 class="labels-for-tables-stat" id="tourney-history-label">PREVIOUS SEASONS</h4>
@@ -23,6 +23,7 @@
                 <p>GAMES LOST: <strong>{{ playerAll.loss }}</strong></p>
                 <p>GAMES DREW: <strong>{{ playerAll.draw }}</strong></p>
                 <p>POINTS EARNED: <strong>{{ playerAll.points }}</strong></p>
+                <p>WIN RATE: <strong>{{ ovr_rate }}%</strong></p>
                 <p>TROPHIES WON: <strong>{{ player.tourneys_won }}</strong></p>
             </div>
         </div>

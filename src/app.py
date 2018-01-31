@@ -218,12 +218,14 @@ def stat():
         room = Room.find_by_id(_id)
         player = Player.find_by_name(name)
         playerAll = Player_All.find_by_name(name)
+        current_rate = ((player.wins / player.games_played) * 100)
+        ovr_rate = ((playerAll.wins / playerAll.games_played) * 100)
         matches = room.get_matches()
         player_match = []
         for match in matches:
             if match.p1 == player.name or match.p2 == player.name and name is not None:
                 player_match.append(match)
-        return render_template('stat.html', player=player, matches=player_match, playerAll=playerAll)
+        return render_template('stat.html', player=player, matches=player_match, playerAll=playerAll, current_rate=current_rate, ovr_rate=ovr_rate)
 
 
 @app.route('/matches/add', methods=['GET', 'POST'])
