@@ -4,6 +4,8 @@ from src.common.database import Database
 from src.models.player import Player
 from src.models.points import Points
 from src.models.room import Room
+from src.models.player_all import Player_All
+
 
 # initializing the flask app
 app = Flask(__name__)
@@ -87,7 +89,7 @@ def delete_room():
         session['_id'] = None
         return redirect('/')
     else:
-        return redirect('/dashboard')
+        return redirect('/dashboard-error')
 
 
 @app.route('/auth/login', methods=['POST', 'GET'])
@@ -154,6 +156,20 @@ def create_new_player():
         else:
             return redirect('/dashboard-error')
 
+@app.route('/end-season', methods=['GET', 'POST'])
+def end_season():
+    if request.method == 'GET':
+        return redirect('/dashboard')
+    else:
+        password = request.form['password']
+        _id = session['_id']
+        room = Room.find_by_id(_id)
+        if room.password == password:
+            room.end_season()
+            return redirect('/dashboard')
+        else:
+            return redirect('/dashboard-error')
+
 
 @app.route('/setting/points', methods=['GET','POST'])
 def change_points():
@@ -165,7 +181,7 @@ def change_points():
         password = request.form['password']
         _id = session['_id']
         room = Room.find_by_id(_id)
-        if room.password == password:
+        if room.password == password and ppw is not None and ppd is not None:
             points = Points.get_points(_id)
             points.ppd = ppd
             points.ppw = ppw
@@ -183,9 +199,8 @@ def remove_player():
         name = request.form['player_name']
         password = request.form['password']
         _id = session['_id']
-        name = name.upper()
         room = Room.find_by_id(_id)
-        if room.password == password and Player.find_by_name(name):
+        if room.password == password and name is not None:
             player = Player.find_by_name(name)
             player.remove_from_mongo()
             return redirect('/dashboard')
@@ -202,32 +217,28 @@ def stat():
         _id = session['_id']
         room = Room.find_by_id(_id)
         player = Player.find_by_name(name)
+        playerAll = Player_All.find_by_name(name)
         matches = room.get_matches()
         player_match = []
         for match in matches:
-            if match.p1 == player.name or match.p2 == player.name:
+            if match.p1 == player.name or match.p2 == player.name and name is not None:
                 player_match.append(match)
-            else:
-                pass
-        return render_template('stat.html', player=player, matches=player_match)
+        return render_template('stat.html', player=player, matches=player_match, playerAll=playerAll)
 
 
-@app.route('/matches/add', methods=['GET','POST'])
+@app.route('/matches/add', methods=['GET', 'POST'])
 def match_add():
     if request.method == 'GET':
         return redirect('/dashboard')
     else:
         p1 = request.form['p1']
         p2 = request.form['p2']
-        p1 = p1.upper()
-        p2 = p2.upper()
         p1score = request.form['p1score']
         p2score = request.form['p2score']
         password = request.form['password']
         _id = session['_id']
-
         room = Room.find_by_id(_id)
-        if room.password == password and Player.find_by_name(p1) and Player.find_by_name(p2):
+        if room.password == password and p1 is not None and p2 is not None:
             room.new_match(p1,p2,p1score,p2score,_id)
             room.update_table(p1,p2,p1score,p2score)
             return redirect('/dashboard')
@@ -242,5 +253,5 @@ def logout():
     return redirect('/')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=4999)
 

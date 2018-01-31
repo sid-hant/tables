@@ -1,3 +1,43 @@
+.player-setting-label{
+    color:rgb(98,98,98);
+}
+
+
+#stat-table-matches{
+    width: 100%;
+    color: white;
+    text-align: center;
+}
+
+#tourney-history-label{
+    text-align:left;
+}
+
+.stat-table{
+    color: white;
+}
+
+.labels-for-tables-stat{
+    text-align:left;
+    color:rgb(98,98,98);
+    font-family: 'Oswald', sans-serif;
+}
+
+.stat-col{
+    align: left;
+}
+
+
+#stat-name-label{
+    color:rgb(48,48,48);
+    text-align: center;
+}
+
+#table-stat{
+    text-align:center;
+    font-size: 180px;
+}
+
 #room_name_id{
     font-family: 'News Cycle', sans-serif;
 }
@@ -52,6 +92,7 @@ label{
     padding-top: 20px;
     width: 275px;
     color: white;
+    text-align: center;
 }
 
 .togg-but{

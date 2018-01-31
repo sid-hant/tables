@@ -1,23 +1,22 @@
-{% extends "base.html" %}
-{% block content %}
+{% extends "base.html" %} {% block content %}
 <div class="container login-page"></div>
 <div class="container page-form">
-   <h1 class="tables-main">tables</h1>
-   <form class="login-form" action="/auth/login" method="post">
-      <div class="form-group">
-         <label class='login-form-label' for="room_id">ROOM ID</label>
-         <input type="text" id="room_id" class="form-control" name="room_id">
-      </div>
-      <div class="form-group">
-         <label for="password" class="login-form-label">PASSWORD</label>
-         <input type="password" id="password" class="form-control" name="password">
-      </div>
-      <h5>{{ error_msg }}</h5>
-      <button type="submit" class="btn btn-outline-success log-butt">LOG IN</button>
-   </form>
+    <h1 class="tables-main">tables</h1>
+    <form class="login-form" action="/auth/login" method="post">
+        <div class="form-group">
+            <label class='login-form-label' for="room_id">ROOM ID</label>
+            <input type="text" id="room_id" class="form-control" name="room_id">
+        </div>
+        <div class="form-group">
+            <label for="password" class="login-form-label">PASSWORD</label>
+            <input type="password" id="password" class="form-control" name="password">
+        </div>
+        <h5>{{ error_msg }}</h5>
+        <button type="submit" class="btn btn-outline-success log-butt">LOG IN</button>
+    </form>
 </div>
 <div class="container sign-up-div">
-   <a href="/register"><button class="btn btn-outline-warning sign-up log-butt">SIGN UP</button></a>
+    <a href="/register"><button class="btn btn-outline-warning sign-up log-butt">SIGN UP</button></a>
 </div>
 
 <div class="navbar navbar-inverse navbar-fixed-bottom foot" role="navigation">
@@ -26,4 +25,5 @@
             <p>© made by sid | <a target="_blank" href="https://docs.google.com/document/d/1tC4qbq-6k7bVNk4xTGUrVT59FhQvbJ_ocmVoWYIZTvU/edit?usp=sharing">user-guide</a></p>
         </div>
     </div>
-{% endblock %}
+</div>
+    {% endblock %}

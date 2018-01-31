@@ -27,9 +27,10 @@
         <div class="collapse multi-collapse" id="multiCollapseADDMATCH">
             <div class="card card-body">
                 <form class="form-add" action="/matches/add" method="post">
+                    <h4 class="player-setting-label">ADD MATCH</h4>
                     <div class="form-group">
                         <label for="p1">PLAYER NAME(1)</label>
-                            <select class="form-control" id="p1" name="p1">
+                        <select class="form-control" id="p1" name="p1">
                                  {% for player in players %}
                               <option>{{ player.name }}</option>
                                 {% endfor %}
@@ -37,7 +38,7 @@
                     </div>
                     <div class="form-group">
                         <label for="p2">PLAYER NAME(2)</label>
-                            <select class="form-control" id="p2" name="p2">
+                        <select class="form-control" id="p2" name="p2">
                                  {% for player in players %}
                               <option>{{ player.name }}</option>
                                 {% endfor %}
@@ -60,12 +61,14 @@
             </div>
         </div>
         <br>
-        <a class="btn btn-outline-secondary togg-but" data-toggle="collapse" href="#multiCollapseADDPLAYER" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
-         ADD PLAYER
+        <a class="btn btn-outline-secondary togg-but" data-toggle="collapse" href="#multiCollapsePLAYER" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
+            PLAYERS
          </a>
-        <div class="collapse multi-collapse" id="multiCollapseADDPLAYER">
+        <div class="collapse multi-collapse" id="multiCollapsePLAYER">
             <div class="card card-body">
+
                 <form class="form-add" action="/players/add" method="post">
+                    <h4 class="player-setting-label">ADD PLAYER</h4>
                     <div class="form-group">
                         <label for="player_name">NAME</label>
                         <input type="text" id="player_name" class="form-control" name="player_name">
@@ -76,18 +79,11 @@
                     </div>
                     <button type="submit" class="btn btn-outline-success form-butt">ADD PLAYER</button>
                 </form>
-            </div>
-        </div>
-        <br>
-        <a class="btn btn-outline-secondary togg-but" data-toggle="collapse" href="#multiCollapseREMPLAYER" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
-         REMOVE PLAYER
-         </a>
-        <div class="collapse multi-collapse" id="multiCollapseREMPLAYER">
-            <div class="card card-body">
                 <form class="form-add" action="/players/remove" method="post">
+                    <h4 class="player-setting-label">REMOVE PLAYER</h4>
                     <div class="form-group">
                         <label for="player_name">NAME</label>
-                            <select class="form-control" id="player_name1" name="player_name">
+                        <select class="form-control" id="player_name1" name="player_name">
                                  {% for player in players %}
                               <option>{{ player.name }}</option>
                                 {% endfor %}
@@ -99,17 +95,30 @@
                     </div>
                     <button type="submit" class="btn btn-outline-danger form-butt">REMOVE PLAYER</button>
                 </form>
+                <form class="form-add" action="/stats" method="post">
+                    <h4 class="player-setting-label">VIEW PLAYER STATS</h4>
+                    <div class="form-group">
+                        <label for="player_name">NAME</label>
+                        <select class="form-control" id="player_namee" name="player_name">
+                                 {% for player in players %}
+                              <option>{{ player.name }}</option>
+                                {% endfor %}
+                            </select>
+                    </div>
+                    <button type="submit" class="btn btn-outline-success form-butt">VIEW STATS</button>
+                </form>
             </div>
         </div>
         <br>
 
         <a class="btn btn-outline-secondary togg-but" data-toggle="collapse" href="#multiCollapseSETTINGS" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
-         POINTS SETTINGS
+         POINTS CONFIG
          </a>
         <div class="collapse multi-collapse" id="multiCollapseSETTINGS">
             <div class="card card-body">
 
                 <form class="form-add" action="/setting/points" method="post">
+                    <h4 class="player-setting-label">POINTS SETTING</h4>
                     <div class="form-group">
                         <label for="ppw">POINTS PER WIN</label>
                         <input type="number" id="ppw" class="form-control" name="ppw">
@@ -127,25 +136,19 @@
             </div>
         </div>
         <br>
-        <a class="btn btn-outline-secondary togg-but" data-toggle="collapse" href="#multiCollapseSTATS" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
-         VIEW PLAYER STAT
+
+        <a class="btn btn-outline-secondary togg-but" data-toggle="collapse" href="#multiCollapseTourney" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
+         SEASON
          </a>
-        <div class="collapse multi-collapse" id="multiCollapseSTATS">
+        <div class="collapse multi-collapse" id="multiCollapseTourney">
             <div class="card card-body">
-                <form class="form-add" action="/stats" method="post">
+                <form class="form-add" action="/end-season" method="post">
+                    <h4 class="player-setting-label">END SEASON</h4>
                     <div class="form-group">
-                        <label for="player_name">NAME</label>
-                            <select class="form-control" id="player_namee" name="player_name">
-                                 {% for player in players %}
-                              <option>{{ player.name }}</option>
-                                {% endfor %}
-                            </select>
+                        <label>PASSWORD</label>
+                        <input type="password" class="form-control" name="password">
                     </div>
-                    <div class="form-group">
-                        <label for="password">PASSWORD</label>
-                        <input type="password" id="_password" class="form-control" name="password">
-                    </div>
-                    <button type="submit" class="btn btn-outline-success form-butt">VIEW STATS</button>
+                    <button type="submit" class="btn btn-outline-success form-butt">END SEASON</button>
                 </form>
             </div>
         </div>
@@ -157,6 +160,7 @@
         <div class="collapse multi-collapse" id="multiCollapseDELETEROOM">
             <div class="card card-body">
                 <form class="form-add" action="/delete-room" method="post">
+                    <h4 class="player-setting-label">DELETE ROOM</h4>
                     <div class="form-group">
                         <label for="password">PASSWORD</label>
                         <input type="password" class="form-control" name="password">
@@ -169,6 +173,7 @@
                 </form>
             </div>
         </div>
+
 
         <div class="container last-5">
             <h4 class="labels-for-tables">LAST 5 MATCHES</h4>
@@ -209,6 +214,7 @@
                     <th scope="col">L</th>
                     <th scope="col">D</th>
                     <th scope="col">P</th>
+                    <th scope="col">TW</th>
                 </tr>
             </thead>
             <tbody class="table-body-class">
@@ -220,6 +226,7 @@
                     <td>{{ player.loss }}</td>
                     <td>{{ player.draw }}</td>
                     <td>{{ player.points }}</td>
+                    <td>{{ player.tourneys_won }}</td>
                 </tr>
                 {% endfor %}
             </tbody>

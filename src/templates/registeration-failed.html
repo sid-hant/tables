@@ -1,34 +1,33 @@
-{% extends "base.html" %}
-{% block content %}
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+{% extends "base.html" %} {% block content %}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
-      <strong>FAILED TO REGISTER: PASSWORD MUST BE LONGER THAN 8 LETTERS/NUMBERS & ROOM NAME MUST BE LESS THAN 20 CHARACTERS</strong>
-    </div>
+    <strong>FAILED TO REGISTER: PASSWORD MUST BE LONGER THAN 8 LETTERS/NUMBERS & ROOM NAME MUST BE LESS THAN 20 CHARACTERS</strong>
+</div>
 <div class="container page-form">
 
-   <div id="create-room-label">
-      <h1 class="tables-main">tables - create a room</h1>
-   </div>
-   <form class="login-form" action="/auth/register" method="post">
-       <div class="form-group">
-         <label for="name" class="login-form-label">NAME</label>
-         <input type="text" id="name" class="form-control" name="name">
-      </div>
-       <div class="form-group">
-         <label for="password" class="login-form-label">PASSWORD</label>
-         <input type="password" id="password" class="form-control" name="password">
-      </div>
+    <div id="create-room-label">
+        <h1 class="tables-main">tables - create a room</h1>
+    </div>
+    <form class="login-form" action="/auth/register" method="post">
         <div class="form-group">
-         <label for="password" class="login-form-label">CONFIRM PASSWORD</label>
-         <input type="password" id="confirm_password" class="form-control" name="confirm_password">
-      </div>
-      <button type="submit" class="btn btn-outline-success log-butt">SIGN UP</button>
-   </form>
+            <label for="name" class="login-form-label">NAME</label>
+            <input type="text" id="name" class="form-control" name="name">
+        </div>
+        <div class="form-group">
+            <label for="password" class="login-form-label">PASSWORD</label>
+            <input type="password" id="password" class="form-control" name="password">
+        </div>
+        <div class="form-group">
+            <label for="password" class="login-form-label">CONFIRM PASSWORD</label>
+            <input type="password" id="confirm_password" class="form-control" name="confirm_password">
+        </div>
+        <button type="submit" class="btn btn-outline-success log-butt">SIGN UP</button>
+    </form>
 </div>
 <div class="container sign-up-div">
-   <a href="/login"><button class="btn btn-outline-warning sign-up log-butt">LOG IN</button></a>
+    <a href="/login"><button class="btn btn-outline-warning sign-up log-butt">LOG IN</button></a>
 </div>
 
 <div class="navbar navbar-inverse navbar-fixed-bottom foot" role="navigation">
@@ -37,4 +36,5 @@
             <p>© made by sid | <a target="_blank" href="https://docs.google.com/document/d/1tC4qbq-6k7bVNk4xTGUrVT59FhQvbJ_ocmVoWYIZTvU/edit?usp=sharing">user-guide</a></p>
         </div>
     </div>
-{% endblock %}
+</div>
+    {% endblock %}

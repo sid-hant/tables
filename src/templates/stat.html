@@ -1,41 +1,34 @@
-{% extends "base.html" %}
-{% block content %}
+{% extends "base.html" %} {% block content %}
 
 <div class="container">
 
-    <h1 class="tables-main table-stat">tables stat for <i>{{ player.name.lower() }}</i>:</h1>
-    <br>
-    <br>
-    <h4 class="labels-for-tables">CURRENT STAT</h4>
-
-    <table class="table">
-            <thead>
-                <tr class="table-headers">
-                    <th scope="col">GAMES PLAYED</th>
-                    <th scope="col">WINS</th>
-                    <th scope="col">LOSS</th>
-                    <th scope="col">DRAWS</th>
-                    <th scope="col">POINTS EARNED</th>
-                    <th scope="col">TOURNEYS WON</th>
-                </tr>
-            </thead>
-            <tbody class="table-body-class stat-bg">
-                <tr>
-                    <td>{{ player.games_played }}</td>
-                    <td>{{ player.wins }}</td>
-                    <td>{{ player.loss }}</td>
-                    <td>{{ player.draw }}</td>
-                    <td>{{ player.points }}</td>
-                </tr>
-            </tbody>
-        </table>
-    <br>
+    <h1 class="tables-main" id="table-stat">tables</h1>
+    <h1 id="stat-name-label"><i>{{ player.name }}</i></h1>
     <br>
 
-
-    <div class="container last-5">
-                <h4 class="labels-for-tables">MATCHES</h4>
-            <table class="table last-5-table">
+    <div class="container row table-match-leader table-body-class">
+        <div class="col-sm stat-col">
+            <h4 class="labels-for-tables-stat">CURRENT STATS</h4>
+            <p>GAMES PLAYED: <strong>{{ player.games_played }}</strong></p>
+            <p>GAMES WON: <strong>{{ player.wins }}</strong></p>
+            <p>GAMES LOST: <strong>{{ player.loss }}</strong></p>
+            <p>GAMES DREW: <strong>{{ player.draw }}</strong></p>
+            <p>POINTS EARNED: <strong>{{ player.points }}</strong></p>
+            <p>TROPHIES WON: <strong>{{ player.tourneys_won }}</strong></p>
+            <br>
+            <div>
+                <h4 class="labels-for-tables-stat" id="tourney-history-label">PREVIOUS SEASONS</h4>
+                <p>GAMES PLAYED: <strong>{{ playerAll.games_played }}</strong></p>
+                <p>GAMES WON: <strong>{{ playerAll.wins }}</strong></p>
+                <p>GAMES LOST: <strong>{{ playerAll.loss }}</strong></p>
+                <p>GAMES DREW: <strong>{{ playerAll.draw }}</strong></p>
+                <p>POINTS EARNED: <strong>{{ playerAll.points }}</strong></p>
+                <p>TROPHIES WON: <strong>{{ player.tourneys_won }}</strong></p>
+            </div>
+        </div>
+        <div class="col-sm">
+            <h4 class="labels-for-tables">MATCHES</h4>
+            <table class="table last-5-table" id="stat-table-matches">
                 <thead>
                     <tr class="table-headers">
                         <th scope="col" class="table-match-label">Name</th>
@@ -56,6 +49,9 @@
                 </tbody>
             </table>
         </div>
+    </div>
+</div>
+
 </div>
 
 {% endblock %}
