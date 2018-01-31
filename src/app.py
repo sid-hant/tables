@@ -19,21 +19,7 @@ app.secret_key = 'sid'
 def initialize_database():
     Database.initialize()
 
-
-@app.route('/', methods=['GET', 'POST'])
-def home_login():
-    if request.method == 'POST':
-        if session['_id'] is None:
-            return render_template('login.html')
-        else:
-            return redirect('/dashboard')
-    else:
-        if session['_id'] is None:
-            return render_template('login.html')
-        else:
-            return redirect('/dashboard')
-
-
+@app.route('/')
 @app.route('/login')
 def login_p():
     if request.method == 'POST':
@@ -194,7 +180,7 @@ def change_points():
 @app.route('/players/remove', methods=['GET', 'POST'])
 def remove_player():
     if request.method == 'GET':
-        return make_response(dashboard_template)
+        return redirect('/dashboard')
     else:
         name = request.form['player_name']
         password = request.form['password']
@@ -206,7 +192,6 @@ def remove_player():
             return redirect('/dashboard')
         else:
             return redirect('/dashboard-error')
-
 
 @app.route('/stats', methods=['GET', 'POST'])
 def stat():
@@ -240,7 +225,7 @@ def match_add():
         password = request.form['password']
         _id = session['_id']
         room = Room.find_by_id(_id)
-        if room.password == password and p1 is not None and p2 is not None:
+        if room.password == password and p1 is not None and p2 is not None and p1 != p2:
             room.new_match(p1,p2,p1score,p2score,_id)
             room.update_table(p1,p2,p1score,p2score)
             return redirect('/dashboard')
@@ -255,5 +240,5 @@ def logout():
     return redirect('/')
 
 if __name__ == '__main__':
-    app.run(debug=True, port=4999)
+    app.run(debug=True, port=5000)
 
