@@ -20,6 +20,19 @@ def initialize_database():
     Database.initialize()
 
 @app.route('/')
+def home_temp():
+    if request.method == 'POST':
+        if session['_id'] is None:
+            return render_template('login.html')
+        else:
+            return redirect('/dashboard')
+    else:
+        if session['_id'] is None:
+            return render_template('login.html')
+        else:
+            return redirect('/dashboard')
+
+
 @app.route('/login')
 def login_p():
     if request.method == 'POST':
