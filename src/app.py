@@ -22,7 +22,7 @@ def initialize_database():
 @app.route('/', methods=['POST', 'GET'])
 def home_temp():
     session['_id'] = None
-    return redirect('/')
+    return render_template('login.html')
     if session['_id'] is None:
         return render_template('login.html')
     else:
