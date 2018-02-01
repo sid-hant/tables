@@ -31,12 +31,12 @@ def home_temp():
 @app.route('/login', methods=['POST', 'GET'])
 def login_p():
     if request.method == 'GET':
-        if session['_id'] is None:
+        if session['_id'] is 0:
             return render_template('login.html')
         else:
             return redirect('/dashboard')
     else:
-        if session['_id'] is None:
+        if session['_id'] is 0:
             return render_template('login.html')
         else:
             return redirect('/dashboard')
@@ -45,12 +45,12 @@ def login_p():
 @app.route('/register', methods=['POST', 'GET'])
 def register_redirect():
     if request.method == 'GET':
-        if session['_id'] is None:
+        if session['_id'] is 0:
             return render_template('register.html')
         else:
             return redirect('/dashboard')
     else:
-        if session['_id'] is None:
+        if session['_id'] is 0:
             return render_template('register.html')
         else:
             return redirect('/dashboard')
@@ -69,7 +69,7 @@ def register_room():
         point.save_to_mongo()
         return redirect('/dashboard')
     else:
-        session['_id'] = None
+        session['_id'] = 0
         return render_template('registeration-failed.html')
 
 
@@ -80,7 +80,7 @@ def delete_room():
     room = Room.find_by_id(session['_id'])
     if password == room.password and password_2 == room.password:
         room.remove_room()
-        session['_id'] = None
+        session['_id'] = 0
         return redirect('/')
     else:
         return redirect('/dashboard-error')
@@ -94,13 +94,13 @@ def login_room():
         Room.login(room_id)
         return redirect('/dashboard')
     else:
-        session['_id'] = None
+        session['_id'] = 0
         return render_template('login-failed.html')
 
 
 @app.route('/dashboard', methods=['GET','POST'])
 def dashboard_template():
-    if session['_id'] is None:
+    if session['_id'] is 0:
         return redirect('/login')
     else:
         room = Room.find_by_id(session['_id'])
@@ -118,7 +118,7 @@ def dashboard_template():
 
 @app.route('/dashboard-error', methods=['GET','POST'])
 def dashboard_error_template():
-    if session['_id'] is None:
+    if session['_id'] is 0:
         return redirect('/login')
     else:
         room = Room.find_by_id(session['_id'])
@@ -243,7 +243,7 @@ def match_add():
 
 @app.route('/logout', methods=['GET', 'POST'])
 def logout():
-    session['_id'] = None
+    session['_id'] = 0
 
     return redirect('/')
 
