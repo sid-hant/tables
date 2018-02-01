@@ -18,10 +18,11 @@ app.secret_key = 'sid'
 @app.before_first_request
 def initialize_database():
     Database.initialize()
+    session['_id'] = 0
 
 @app.route('/', methods=['POST', 'GET'])
 def home_temp():
-    if session['id'] is None:
+    if session['id'] is 0:
         return render_template('login.html')
     else:
         return redirect('/dashboard')
