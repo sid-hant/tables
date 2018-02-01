@@ -19,7 +19,7 @@ app.secret_key = 'sid'
 def initialize_database():
     Database.initialize()
 
-@app.route('/')
+@app.route('/', methods=['POST', 'GET'])
 def home_temp():
     if request.method == 'POST':
         if session['_id'] is None:
@@ -33,7 +33,7 @@ def home_temp():
             return redirect('/dashboard')
 
 
-@app.route('/login')
+@app.route('/login', methods=['POST', 'GET'])
 def login_p():
     if request.method == 'POST':
         if session['_id'] is None:
@@ -47,7 +47,7 @@ def login_p():
             return redirect('/dashboard')
 
 
-@app.route('/register')
+@app.route('/register', methods=['POST', 'GET'])
 def register_redirect():
     if request.method == 'POST':
         if session['_id'] is None:
