@@ -1,4 +1,3 @@
-import uuid
 from src.common.database import Database
 
 

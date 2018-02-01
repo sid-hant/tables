@@ -29,7 +29,7 @@ def home_temp():
 
 @app.route('/login', methods=['POST', 'GET'])
 def login_p():
-    if request.method == 'POST':
+    if request.method == 'GET':
         if session['_id'] is None:
             return render_template('login.html')
         else:
@@ -43,7 +43,7 @@ def login_p():
 
 @app.route('/register', methods=['POST', 'GET'])
 def register_redirect():
-    if request.method == 'POST':
+    if request.method == 'GET':
         if session['_id'] is None:
             return render_template('register.html')
         else:
@@ -247,5 +247,5 @@ def logout():
     return redirect('/')
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    app.run(debug=True, port=4999)
 

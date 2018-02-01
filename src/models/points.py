@@ -1,6 +1,5 @@
 from src.common.database import Database
 
-
 class Points(object):
     def __init__(self, _id, ppw, ppd):
         self._id = _id

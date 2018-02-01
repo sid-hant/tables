@@ -160,13 +160,6 @@ class Room(object):
     def get_matches(self):
         return Match.find_by_room_id(self._id)
 
-    def amount_of_players(self):
-        players = self.get_players()
-        numb = 0
-        for player in players:
-            numb = numb + 1
-        return numb
-
     def end_season(self):
         players = self.get_players()
         current_winner = None
