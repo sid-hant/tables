@@ -21,7 +21,7 @@ def initialize_database():
 
 @app.route('/', methods=['POST', 'GET'])
 def home_temp():
-    if session['_id'] is None:
+    if session['id'] is None:
         return render_template('login.html')
     else:
         return redirect('/dashboard')
