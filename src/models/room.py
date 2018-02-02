@@ -14,7 +14,7 @@ class Room(object):
         self.name = name
 
     def save_to_mongo(self):
-        Database.insert(collection='rooms', data=self.json())
+        Database.insert('rooms', self.json())
 
     def json(self):
         return {
