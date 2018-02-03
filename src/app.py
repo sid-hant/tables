@@ -18,7 +18,7 @@ app.secret_key = 'sid'
 @app.before_first_request
 def initialize_database():
     Database.initialize()
-    session['_id']=None
+    session['_id']= 43589
 
 
 @app.route('/', methods=['POST', 'GET'])
