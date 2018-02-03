@@ -5,13 +5,14 @@ from src.models.player import Player
 from src.models.points import Points
 from src.models.room import Room
 from src.models.player_all import Player_All
+import os
 
 
 # initializing the flask app
 app = Flask(__name__)
 
 # secret key
-app.secret_key = 'sid'
+app.secret_key = os.urandom(24)
 
 
 # initializing the database
