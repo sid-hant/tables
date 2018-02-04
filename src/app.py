@@ -11,8 +11,9 @@ import os
 # initializing the flask app
 app = Flask(__name__)
 
+
 # secret key
-app.secret_key = os.urandom(24)
+app.secret_key = 'super_secret_key90909090'
 
 
 # initializing the database
