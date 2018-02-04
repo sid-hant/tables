@@ -5,7 +5,6 @@ from src.models.player import Player
 from src.models.points import Points
 from src.models.room import Room
 from src.models.player_all import Player_All
-import os
 
 
 # initializing the flask app
@@ -20,8 +19,7 @@ app.secret_key = 'super_secret_key90909090'
 @app.before_first_request
 def initialize_database():
     Database.initialize()
-    if '_id' not in session:
-        session['_id'] = 67207220660863
+    session['_id'] = 67207220660863
 
 
 @app.route('/', methods=['POST', 'GET'])
