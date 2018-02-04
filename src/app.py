@@ -1,5 +1,6 @@
 # importing libraries to use
 from flask import Flask, render_template, request, session, make_response, redirect
+import flask
 from src.common.database import Database
 from src.models.player import Player
 from src.models.points import Points
@@ -19,7 +20,7 @@ app.secret_key = 'super_secret_key90909090'
 @app.before_first_request
 def initialize_database():
     Database.initialize()
-    session['_id'] = 67207220660863
+    flask.session['_id'] = 67207220660863
 
 
 @app.route('/', methods=['POST', 'GET'])
