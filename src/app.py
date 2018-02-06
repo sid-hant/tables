@@ -25,7 +25,7 @@ def initialize_database():
 
 @app.route('/', methods=['POST', 'GET'])
 def home_temp():
-    if session['_id'] == 67207220660863:
+    if session.get('_id') == 67207220660863:
         return render_template('login.html')
     else:
         return redirect('/dashboard')
