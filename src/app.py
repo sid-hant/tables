@@ -34,12 +34,12 @@ def home_temp():
 @app.route('/login', methods=['POST', 'GET'])
 def login_p():
     if request.method == 'GET':
-        if session['_id'] == 67207220660863:
+        if session.get('_id') == 67207220660863:
             return render_template('login.html')
         else:
             return redirect('/dashboard')
     else:
-        if session['_id'] == 67207220660863:
+        if session.get('_id') == 67207220660863:
             return render_template('login.html')
         else:
             return redirect('/dashboard')
@@ -48,12 +48,12 @@ def login_p():
 @app.route('/register', methods=['POST', 'GET'])
 def register_redirect():
     if request.method == 'GET':
-        if session['_id'] == 67207220660863:
+        if session.get('_id') == 67207220660863:
             return render_template('register.html')
         else:
             return redirect('/dashboard')
     else:
-        if session['_id'] == 67207220660863:
+        if session.get('_id') == 67207220660863:
             return render_template('register.html')
         else:
             return redirect('/dashboard')
@@ -103,7 +103,7 @@ def login_room():
 
 @app.route('/dashboard', methods=['GET','POST'])
 def dashboard_template():
-    if session['_id'] == 67207220660863:
+    if session.get('_id') == 67207220660863:
         return redirect('/login')
     else:
         room = Room.find_by_id(session['_id'])
@@ -121,7 +121,7 @@ def dashboard_template():
 
 @app.route('/dashboard-error', methods=['GET','POST'])
 def dashboard_error_template():
-    if session['_id'] == 67207220660863:
+    if session.get('_id') == 67207220660863:
         return redirect('/login')
     else:
         room = Room.find_by_id(session['_id'])
