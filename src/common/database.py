@@ -3,15 +3,15 @@ import os
 
 class Database(object):
 
-    URI = "mongodb://127.0.0.1:27017"
-    #URI = os.environ.get("MONGOLAB_URI")
+    #URI = "mongodb://127.0.0.1:27017"
+    URI = os.environ.get("MONGOLAB_URI")
     DATABASE = None
 
     @staticmethod
     def initialize():
         client = pymongo.MongoClient(Database.URI)
-        #Database.DATABASE = client['heroku_0zrpzv9t']
-        Database.DATABASE = client['fullstack']
+        Database.DATABASE = client['heroku_0zrpzv9t']
+        #Database.DATABASE = client['fullstack']
 
     @staticmethod
     def insert(collection, data):
