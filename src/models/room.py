@@ -77,6 +77,7 @@ class Room(object):
         Database.remove('matches', {'room_id': _id})
         Database.remove('playersall', {'room_id': _id})
         Database.remove(collection='rooms', data=self.json())
+        session['_id'] = 67207220660863
 
     @staticmethod
     def update_table(p1, p2, p1score, p2score):
