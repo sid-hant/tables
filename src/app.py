@@ -66,8 +66,8 @@ def register_room():
     name = request.form['name']
     if len(password) >= 8 and len(name) < 20 and password == password_2:
         room = Room(password, name)
-        room.save_to_mongo()
         session['_id'] = room._id
+        room.save_to_mongo()
         point = Points(room._id, 3, 1)
         point.save_to_mongo()
         return redirect('/dashboard')
