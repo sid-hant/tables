@@ -1,26 +1,27 @@
 {% extends "base.html" %} {% block content %}
-<div class="container page-form">
+<div class="container login-signup-page-container">
     <div id="create-room-label">
-        <h1 class="tables-main">tablez - create a room</h1>
+        <h1 class="login-signup-title">tablez - create a room</h1>
     </div>
-    <form class="login-form" action="/auth/register" method="post">
+    <form class="login-signup-form" action="/auth/register" method="post">
         <div class="form-group">
-            <label for="name" class="login-form-label">NAME</label>
+            <label for="name" class="login-signup-form-label">NAME</label>
             <input type="text" id="name" class="form-control" name="name">
         </div>
         <div class="form-group">
-            <label for="password" class="login-form-label">PASSWORD</label>
+            <label for="password" class="login-signup-form-label">PASSWORD</label>
             <input type="password" id="password" class="form-control" name="password">
         </div>
         <div class="form-group">
-            <label for="password" class="login-form-label">CONFIRM PASSWORD</label>
+            <label for="password" class="login-signup-form-label">CONFIRM PASSWORD</label>
             <input type="password" id="confirm_password" class="form-control" name="confirm_password">
         </div>
-        <button type="submit" class="btn btn-outline-success log-butt">SIGN UP</button>
+
+        <button type="submit" class="btn btn-outline-success login-signup-button">SIGN UP</button>
     </form>
 </div>
-<div class="container sign-up-div">
-    <a href="/login"><button class="btn btn-outline-warning sign-up log-butt">LOG IN</button></a>
+<div class="container signup-login-button-container">
+    <a href="/login"><button class="btn btn-outline-warning login-signup-button">LOG IN</button></a>
 </div>
 
 <div class="navbar navbar-inverse navbar-fixed-bottom foot" role="navigation">

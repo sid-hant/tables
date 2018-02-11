@@ -7,27 +7,42 @@
       <strong>ERROR: PLEASE TRY AGAIN!</strong>
     </div>
 <!-- Nav bar -->
-<div class="container">
+<div class="container top-bar">
     <nav class="navbar navbar-toggler-left bg-inverse nav-bar-main">
-        <div class="title-dash"><h1 class="tables-main-dash">tablez</h1></div>
-           <div class="nav-buttons">
-            <a href="/logout"><button type="submit" class="btn btn-outline-danger navbar-toggler-right leave-room-butt">LEAVE ROOM</button></a>
-            <a href="https://docs.google.com/document/d/1tC4qbq-6k7bVNk4xTGUrVT59FhQvbJ_ocmVoWYIZTvU/edit?usp=sharing" target="_blank"><button type="submit" class="btn btn-outline-info navbar-toggler-right leave-room-butt">HELP</button></a>
-            <a href="https://sid-hant.github.io/" target="_blank"><button type="submit" class="btn btn-outline-primary navbar-toggler-right leave-room-butt">MADE BY SIDHANT</button></a>
+        <div class=" "><h1 class="dashboard-title">tablez</h1></div>
+         <div class="header-buttons">
+             <a class="btn btn-outline-secondary menu-buttons" data-toggle="collapse" href="#multiCollapseOP" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
+         SETTING
+        </a>
+        <div class="collapse multi-collapse" id="multiCollapseOP">
+            <div class="card card-body">
+                <a href="/logout">
+                <button type="submit" class="btn btn-outline-danger navbar-toggler-right header-buttons-links">LEAVE ROOM</button>
+            </a>
+            <a href="https://docs.google.com/document/d/1tC4qbq-6k7bVNk4xTGUrVT59FhQvbJ_ocmVoWYIZTvU/edit?usp=sharing" target="_blank">
+                <button type="submit" class="btn btn-outline-info navbar-toggler-right header-buttons-links">HELP</button>
+            </a>
+            <a href="https://sid-hant.github.io/" target="_blank">
+                <button type="submit" class="btn btn-outline-primary navbar-toggler-right header-buttons-links">MADE BY SIDHANT</button>
+            </a>
+            </div>
+        </div>
+
         </div>
     </nav>
 </div>
 <!--End Nav Bar-->
-<div class="container row table-match-leader">
 
-    <div class="col-md-4 settings">
-        <p id="room_name_id"><b>{{ room_name }}</b> {{ room_id }}</p>
-        <a class="btn btn-outline-secondary togg-but" data-toggle="collapse" href="#multiCollapseADDMATCH" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
+<div class="row main-body-container">
+
+    <div class="col-md-4 menu">
+        <p id="room-name-id"><b>{{ room_name }}</b> <br>{{ room_id }}</p>
+        <a class="btn btn-outline-secondary menu-buttons" data-toggle="collapse" href="#multiCollapseADDMATCH" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
          ADD MATCH
-         </a>
+        </a>
         <div class="collapse multi-collapse" id="multiCollapseADDMATCH">
             <div class="card card-body">
-                <form class="form-add" action="/matches/add" method="post">
+                <form class="form-for-menu" action="/matches/add" method="post">
                     <h4 class="player-setting-label">ADD MATCH</h4>
                     <div class="form-group">
                         <label for="p1">PLAYER NAME(1)</label>
@@ -57,18 +72,19 @@
                         <label for="ppassword">PASSWORD</label>
                         <input type="password" id="ppassword" class="form-control" name="password">
                     </div>
-                    <button type="submit" class="btn btn-outline-success form-butt">ADD GAME</button>
+                    <button type="submit" class="btn btn-outline-success menu-form-button">ADD GAME</button>
                 </form>
             </div>
         </div>
+
         <br>
-        <a class="btn btn-outline-secondary togg-but" data-toggle="collapse" href="#multiCollapsePLAYER" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
+        <a class="btn btn-outline-secondary menu-buttons" data-toggle="collapse" href="#multiCollapsePLAYER" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
             PLAYERS
          </a>
         <div class="collapse multi-collapse" id="multiCollapsePLAYER">
             <div class="card card-body">
 
-                <form class="form-add" action="/players/add" method="post">
+                <form class="form-for-menu" action="/players/add" method="post">
                     <h4 class="player-setting-label">ADD PLAYER</h4>
                     <div class="form-group">
                         <label for="player_name">NAME</label>
@@ -78,9 +94,9 @@
                         <label for="password">PASSWORD</label>
                         <input type="password" id="password" class="form-control" name="password">
                     </div>
-                    <button type="submit" class="btn btn-outline-success form-butt">ADD PLAYER</button>
+                    <button type="submit" class="btn btn-outline-success menu-form-button">ADD PLAYER</button>
                 </form>
-                <form class="form-add" action="/players/remove" method="post">
+                <form class="form-for-menu" action="/players/remove" method="post">
                     <h4 class="player-setting-label">REMOVE PLAYER</h4>
                     <div class="form-group">
                         <label for="player_name">NAME</label>
@@ -94,9 +110,9 @@
                         <label for="password">PASSWORD</label>
                         <input type="password" id="remove_password" class="form-control" name="password">
                     </div>
-                    <button type="submit" class="btn btn-outline-danger form-butt">REMOVE PLAYER</button>
+                    <button type="submit" class="btn btn-outline-danger menu-form-button">REMOVE PLAYER</button>
                 </form>
-                <form class="form-add" action="/stats" method="post">
+                <form class="form-for-menu" action="/stats" method="post">
                     <h4 class="player-setting-label">VIEW PLAYER STATS</h4>
                     <div class="form-group">
                         <label for="player_name">NAME</label>
@@ -106,19 +122,20 @@
                                 {% endfor %}
                             </select>
                     </div>
-                    <button type="submit" class="btn btn-outline-success form-butt">VIEW STATS</button>
+                    <button type="submit" class="btn btn-outline-success menu-form-button">VIEW STATS</button>
                 </form>
             </div>
         </div>
+
         <br>
 
-        <a class="btn btn-outline-secondary togg-but" data-toggle="collapse" href="#multiCollapseSETTINGS" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
+        <a class="btn btn-outline-secondary menu-buttons" data-toggle="collapse" href="#multiCollapseSETTINGS" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
          POINTS CONFIG
          </a>
         <div class="collapse multi-collapse" id="multiCollapseSETTINGS">
             <div class="card card-body">
 
-                <form class="form-add" action="/setting/points" method="post">
+                <form class="form-for-menu" action="/setting/points" method="post">
                     <h4 class="player-setting-label">POINTS SETTING</h4>
                     <div class="form-group">
                         <label for="ppw">POINTS PER WIN</label>
@@ -132,35 +149,35 @@
                         <label for="password">PASSWORD</label>
                         <input type="password" id="ppw_pass" class="form-control" name="password">
                     </div>
-                    <button type="submit" class="btn btn-outline-success form-butt">UPDATE</button>
+                    <button type="submit" class="btn btn-outline-success menu-form-button">UPDATE</button>
                 </form>
             </div>
         </div>
         <br>
 
-        <a class="btn btn-outline-secondary togg-but" data-toggle="collapse" href="#multiCollapseTourney" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
+        <a class="btn btn-outline-secondary menu-buttons" data-toggle="collapse" href="#multiCollapseTourney" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
          SEASON
          </a>
         <div class="collapse multi-collapse" id="multiCollapseTourney">
             <div class="card card-body">
-                <form class="form-add" action="/end-season" method="post">
+                <form class="form-for-menu" action="/end-season" method="post">
                     <h4 class="player-setting-label">END SEASON</h4>
                     <div class="form-group">
                         <label>PASSWORD</label>
                         <input type="password" class="form-control" name="password">
                     </div>
-                    <button type="submit" class="btn btn-outline-success form-butt">END SEASON</button>
+                    <button type="submit" class="btn btn-outline-success menu-form-button">END SEASON</button>
                 </form>
             </div>
         </div>
         <br>
 
-        <a class="btn btn-danger togg-but" data-toggle="collapse" href="#multiCollapseDELETEROOM" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
+        <a class="btn btn-danger menu-buttons" data-toggle="collapse" href="#multiCollapseDELETEROOM" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
          DELETE ROOM
          </a>
         <div class="collapse multi-collapse" id="multiCollapseDELETEROOM">
             <div class="card card-body">
-                <form class="form-add" action="/delete-room" method="post">
+                <form class="form-for-menu" action="/delete-room" method="post">
                     <h4 class="player-setting-label">DELETE ROOM</h4>
                     <div class="form-group">
                         <label for="password">PASSWORD</label>
@@ -170,24 +187,19 @@
                         <label for="confirm_password">CONFIRM PASSWORD</label>
                         <input type="password" id="confirm_password" class="form-control" name="confirm_password">
                     </div>
-                    <button type="submit" class="btn btn-danger form-butt">DELETE ROOM</button>
+                    <button type="submit" class="btn btn-danger menu-form-button">DELETE ROOM</button>
                 </form>
             </div>
         </div>
 
 
-        <div class="container last-5">
-            <h4 class="labels-for-tables">LAST 5 MATCHES</h4>
-            <table class="table last-5-table">
-                <thead>
-                    <tr class="table-headers">
-                        <th scope="col" class="table-match-label">Name</th>
-                        <th scope="col" class="table-match-label">Score</th>
-                        <th scope="col" class="table-match-label">Score</th>
-                        <th scope="col" class="table-match-label">Name</th>
-                    </tr>
-                </thead>
-                <tbody class="table-body-class" id="table-top-5-body">
+
+
+
+        <div class="container last-5-container">
+            <h4 class="label-dashboard-items">LAST 5 MATCHES</h4>
+            <table class="last-5-table">
+                <tbody class="table-body-class">
                     {% for match in matches %}
                     <tr>
                         <td>{{ match.p1 }}</td>
@@ -204,8 +216,8 @@
     </div>
 
 
-    <div class="col-md-8 recent-matches-div">
-        <h4 class="labels-for-tables">TABLE</h4>
+    <div class="col-md-8 recent-matches-container">
+        <h4 class="label-dashboard-items">TABLE</h4>
         <table class="table">
             <thead>
                 <tr class="table-headers">

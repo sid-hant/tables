@@ -1,12 +1,234 @@
+
+/* DESKTOP */
+.stat-matches{
+    margin-top: 0;
+    padding-top: 0;
+}
+
+#table-stat{
+    text-align:center;
+    font-size: 800%;
+}
+
+.table-body-class{
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+#stat-name-label{
+    color:rgb(48,48,48);
+    text-align: center;
+}
+
+#stat-table-matches{
+    width: 100%;
+    color: white;
+    text-align: center;
+}
+
+.stat-table{
+    color: white;
+}
+
+.labels-for-tables-stat{
+    text-align:left;
+    color:rgb(98,98,98);
+    font-family: 'Oswald', sans-serif;
+}
+.stat-col{
+    align: left;
+}
+
+#stat-name-label{
+    color:rgb(48,48,48);
+    text-align: center;
+}
+
+#table-stat{
+    text-align:center;
+    font-size: 800%;
+    color:rgb(98,98,98);
+}
+
+.row{
+    align:center;
+    padding-left: 15%;
+    padding-right: 15%;
+}
+
+.recent-matches-container table{
+    background-color:rgb(98,98,98);
+    color:white;
+    text-align:center;
+    width: 100%;
+    font-family: 'Oswald', sans-serif;;
+    font-size: 100%;
+    margin-right: 0;
+
+}
+
+.last-5-container{
+    padding-top: 7%;
+    color: white;
+    text-align: center;
+    width: 100%;
+}
+
+.last-5-table{
+    padding-right: 50%;
+}
+
+.last-5-container table{
+    background-color: rgb(98,98,98);
+    font-family: 'Oswald', sans-serif;
+    font-size: 100%;
+    width: 100%;
+}
+
+.table-headers{
+    background-color:rgb(228,228,228);
+    color:black;
+    font-family: 'News Cycle', sans-serif;
+}
+
+.label-dashboard-items{
+    text-align:center;
+    color:rgb(98,98,98);
+    font-family: 'Oswald', sans-serif;
+    font-size: 120%;
+}
+
+.menu-form-button{
+    width:100%;
+    align:center;
+}
+
+#room-name-id{
+   font-family: 'News Cycle', sans-serif;
+   font-size: 50%;
+}
+
+.menu form{
+    background-color:rgb(228,228,228);
+    color:white;
+    padding: 3.5%;
+    font-family: 'Pathway Gothic One', sans-serif;
+    font-size: 60%;
+}
+
+.form-for-menu label{
+    font-family: 'News Cycle', sans-serif;
+    font-size: 70%;
+}
+
+.menu-buttons{
+    width:100%;
+    font-family: 'Pathway Gothic One', sans-serif;
+    font-size: 110%;
+}
+
+.header-buttons-links{
+    font-family: 'Pathway Gothic One', sans-serif;
+    width: 100%;
+}
+
+.dashboard-title{
+    color:rgb(98,98,98);
+    font-size: 500%;
+    padding-left: 30%;
+    padding-right: 6%;
+}
+
+.header-buttons{
+    padding-left: 0%;
+    padding-right: 13%;
+
+}
+
+.foot{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(98,98,98);
+    color: white;
+    padding: 0px;
+    text-align: center;
+    font-family: 'News Cycle', sans-serif;
+}
+
+.login-signup-page-container{
+    padding-top: 8%;
+    color: white;
+}
+
+.signup-login-button-container{
+    padding-top: 0.5%;
+}
+
+.login-signup-button{
+   font-family: 'Pathway Gothic One', sans-serif;
+   font-size:120%;
+}
+
+.login-signup-form-label{
+   font-family: 'News Cycle', sans-serif;
+}
+
+.login-signup-form{
+    max-width: 30%;
+}
+
+.login-signup-title{
+    color:rgb(98,98,98);
+    font-size: 500%;
+}
+
+html, body{
+    background: white;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+label{
+    color:rgb(48,48,48);
+}
+
+.card-body{
+    padding:0%;
+}
+
+a{
+    color: white;
+}
+
+
+/* OLD
+
 .tables-main-dash{
     color:rgb(98,98,98);
     font-size: 400%;
     padding-left: 30%;
     padding-right: 6%;
 }
+.table-match-label{
+    background-color:rgb(228,228,228);
+    font-size: 100%;
+}
+
+.last-5-table{
+    background-color: rgb(98,98,98);
+    font-family: 'Oswald', sans-serif;
+}
 
 .nav-buttons{
     padding-left: 0%;
+}
+
+#table-top-5-body{
+    font-size: 100%;
 }
 
 .player-setting-label{
@@ -53,18 +275,13 @@
     font-family: 'News Cycle', sans-serif;
 }
 
-a{
-    color: white;
-}
+
 
 .login-form-label{
     font-family: 'News Cycle', sans-serif;
 }
 
-#table-match-label{
-    background-color:rgb(228,228,228);
 
-}
 
 .form-butt{
     width:100%;
@@ -85,24 +302,18 @@ a{
     font-family: 'Pathway Gothic One', sans-serif;
 }
 
-.last-5-table{
-    background-color: rgb(98,98,98);
-    font-family: 'Oswald', sans-serif;
-}
+
 
 .log-butt{
     font-family: 'Pathway Gothic One', sans-serif;
     font-size:120%;
 }
 
-label{
-    color:rgb(48,48,48);
-}
-
 .last-5{
     padding-top: 7%;
     color: white;
     text-align: center;
+    width: 100%;
 }
 
 .togg-but{
@@ -129,7 +340,7 @@ label{
 .settings form{
     background-color:rgb(228,228,228);
     color:white;
-    padding: 2%;
+    padding: 3.5%;
     font-family: 'Pathway Gothic One', sans-serif;
     font-size: 60%;
 }
@@ -143,6 +354,7 @@ label{
     text-align:center;
     color:rgb(98,98,98);
     font-family: 'Oswald', sans-serif;
+    font-size: 100%;
 }
 
 .table-headers{
@@ -151,13 +363,15 @@ label{
     font-family: 'News Cycle', sans-serif;
 }
 .recent-matches-div{
-    margin-top: 6%;
+    margin-top: 0%;
+    width: 5%;
 }
 
 .recent-matches-div table{
     background-color:rgb(98,98,98);
     color:white;
     text-align:center;
+    width: 100%;
     font-family: 'Oswald', sans-serif;;
 }
 
@@ -165,23 +379,14 @@ label{
     padding-left: 14%;
 }
 
-.sign-up-div{
-    padding-top: 0.50%;
-}
+
 
 .login-form{
     max-width: 30%;
 }
 
-.page-form{
-    padding-top: 12%;
-    color: white;
-}
 
-.tables-main{
-    color:rgb(98,98,98);
-    font-size: 500%;
-}
+
 
 .nav-bar-main{
     float: left;
@@ -197,11 +402,8 @@ label{
     font-size: 5%;
     color: black;
     padding-left: 3%;
-
-}
-
-body{
-    background: white;
 }
 
 
+
+*/
