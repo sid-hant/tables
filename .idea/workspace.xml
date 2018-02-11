@@ -3,12 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e4ae8cd2-d143-4610-8392-323f5355296a" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/common/database.py" afterPath="$PROJECT_DIR$/src/common/database.py" />
-      <change beforePath="$PROJECT_DIR$/src/models/room.py" afterPath="$PROJECT_DIR$/src/models/room.py" />
       <change beforePath="$PROJECT_DIR$/src/static/css/main.css" afterPath="$PROJECT_DIR$/src/static/css/main.css" />
-      <change beforePath="$PROJECT_DIR$/src/templates/dashboard-failed.html" afterPath="$PROJECT_DIR$/src/templates/dashboard-failed.html" />
-      <change beforePath="$PROJECT_DIR$/src/templates/dashboard.html" afterPath="$PROJECT_DIR$/src/templates/dashboard.html" />
-      <change beforePath="$PROJECT_DIR$/src/templates/login.html" afterPath="$PROJECT_DIR$/src/templates/login.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -22,8 +17,8 @@
       <file leaf-file-name="main.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/static/css/main.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
-              <caret line="159" column="1" lean-forward="true" selection-start-line="159" selection-start-column="1" selection-end-line="159" selection-end-column="1" />
+            <state relative-caret-position="322">
+              <caret line="153" column="19" lean-forward="false" selection-start-line="153" selection-start-column="19" selection-end-line="153" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -32,7 +27,7 @@
       <file leaf-file-name="dashboard.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/templates/dashboard.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2642">
+            <state relative-caret-position="-2635">
               <caret line="18" column="33" lean-forward="false" selection-start-line="18" selection-start-column="25" selection-end-line="18" selection-end-column="33" />
               <folding />
             </state>
@@ -632,7 +627,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/templates/dashboard.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2642">
+        <state relative-caret-position="-2635">
           <caret line="18" column="33" lean-forward="false" selection-start-line="18" selection-start-column="25" selection-end-line="18" selection-end-column="33" />
           <folding />
         </state>
@@ -640,8 +635,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/static/css/main.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="159" column="1" lean-forward="true" selection-start-line="159" selection-start-column="1" selection-end-line="159" selection-end-column="1" />
+        <state relative-caret-position="322">
+          <caret line="153" column="19" lean-forward="false" selection-start-line="153" selection-start-column="19" selection-end-line="153" selection-end-column="19" />
           <folding />
         </state>
       </provider>

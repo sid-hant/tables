@@ -150,12 +150,14 @@ label{
     color:black;
     font-family: 'News Cycle', sans-serif;
 }
+.recent-matches-div{
+    margin-top: 6%;
+}
 
 .recent-matches-div table{
     background-color:rgb(98,98,98);
     color:white;
     text-align:center;
-    padding-left: 50%;
     font-family: 'Oswald', sans-serif;;
 }
 
