@@ -99,7 +99,7 @@ class Room(object):
                 loser.games_played = loser.games_played + 1
 
                 winnertot = Player_All.find_by_name(p1)
-                winnertot.wins = winner.wins + 1
+                winnertot.wins = winnertot.wins + 1
                 winnertot.games_played = winnertot.games_played + 1
                 winnertot.points = winnertot.points + int(points.ppw)
                 losertot = Player_All.find_by_name(p2)

@@ -3,18 +3,21 @@
 <!-- Nav bar -->
 <div class="container">
     <nav class="navbar navbar-toggler-left bg-inverse nav-bar-main">
-        <h1 class="tables-main">tablez</h1>
-        <a href="/logout"><button type="submit" class="btn btn-outline-danger navbar-toggler-right leave-room-butt">LEAVE ROOM</button></a>
-        <a href="https://docs.google.com/document/d/1tC4qbq-6k7bVNk4xTGUrVT59FhQvbJ_ocmVoWYIZTvU/edit?usp=sharing" target="_blank"><button type="submit" class="btn btn-outline-info navbar-toggler-right leave-room-butt">HELP</button></a>
-        <a href="https://sid-hant.github.io/" target="_blank"><button type="submit" class="btn btn-outline-primary navbar-toggler-right leave-room-butt">MADE BY SIDHANT</button></a>
-        <p class="room-id-text">Room ID: {{ room_id }}</p>
+        <div class="title-dash"><h1 class="tables-main-dash">tablez</h1></div>
+        <div class="nav-buttons">
+            <a href="/logout"><button type="submit" class="btn btn-outline-danger navbar-toggler-right leave-room-butt">LEAVE ROOM</button></a>
+            <a href="https://docs.google.com/document/d/1tC4qbq-6k7bVNk4xTGUrVT59FhQvbJ_ocmVoWYIZTvU/edit?usp=sharing" target="_blank"><button type="submit" class="btn btn-outline-info navbar-toggler-right leave-room-butt">HELP</button></a>
+            <a href="https://sid-hant.github.io/" target="_blank"><button type="submit" class="btn btn-outline-primary navbar-toggler-right leave-room-butt">MADE BY SIDHANT</button></a>
+        </div>
+
+
     </nav>
 </div>
 <!--End Nav Bar-->
 <div class="container row table-match-leader">
 
     <div class="col-md-4 settings">
-        <p id="room_name_id">{{ room_name }}</p>
+        <p id="room_name_id"><b>{{ room_name }}</b> {{ room_id }}</p>
         <a class="btn btn-outline-secondary togg-but" data-toggle="collapse" href="#multiCollapseADDMATCH" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
          ADD MATCH
          </a>

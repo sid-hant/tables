@@ -1,3 +1,14 @@
+.tables-main-dash{
+    color:rgb(98,98,98);
+    font-size: 400%;
+    padding-left: 30%;
+    padding-right: 6%;
+}
+
+.nav-buttons{
+    padding-left: 0%;
+}
+
 .player-setting-label{
     color:rgb(98,98,98);
 }
@@ -35,7 +46,7 @@
 
 #table-stat{
     text-align:center;
-    font-size: 180px;
+    font-size: 800%;
 }
 
 #room_name_id{
@@ -62,7 +73,7 @@ a{
 
 .form-add label{
     font-family: 'News Cycle', sans-serif;
-    font-size: 7.5px;
+    font-size: 110%;
 }
 
 .table-body-class{
@@ -81,7 +92,7 @@ a{
 
 .log-butt{
     font-family: 'Pathway Gothic One', sans-serif;
-    font-size:20px;
+    font-size:120%;
 }
 
 label{
@@ -89,24 +100,22 @@ label{
 }
 
 .last-5{
-    padding-top: 20px;
-    width: 275px;
+    padding-top: 7%;
     color: white;
     text-align: center;
 }
 
 .togg-but{
-    width:275px;
+    width:100%;
     font-family: 'Pathway Gothic One', sans-serif;
-    font-size: 20px;
+    font-size: 110%;
 }
 
 .card-body{
-    padding:0px;
+    padding:0%;
 }
 
 .foot{
-    padding-top: 14px;
     position: fixed;
     left: 0;
     bottom: 0;
@@ -120,9 +129,9 @@ label{
 .settings form{
     background-color:rgb(228,228,228);
     color:white;
-    padding: 8px;
+    padding: 2%;
     font-family: 'Pathway Gothic One', sans-serif;
-    font-size: 8px;
+    font-size: 60%;
 }
 
 .match-label{
@@ -146,6 +155,7 @@ label{
     background-color:rgb(98,98,98);
     color:white;
     text-align:center;
+    padding-left: 50%;
     font-family: 'Oswald', sans-serif;;
 }
 
@@ -154,11 +164,11 @@ label{
 }
 
 .sign-up-div{
-    padding-top: 5px;
+    padding-top: 0.50%;
 }
 
 .login-form{
-    max-width: 350px;
+    max-width: 30%;
 }
 
 .page-form{
@@ -168,21 +178,24 @@ label{
 
 .tables-main{
     color:rgb(98,98,98);
-    padding-right: 20px;
-    font-size: 80px;
+    font-size: 500%;
 }
 
 .nav-bar-main{
     float: left;
+
 }
 
 .nav-bar-main a{
-    padding-right:20px;
+    padding-right: 0%;
+    padding-left: 0%;
 }
 
 .room-id-text{
-    font-size: 10px;
+    font-size: 5%;
     color: black;
+    padding-left: 3%;
+
 }
 
 body{
